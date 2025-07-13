@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="responsive.css">
+    <title>HR Development</title>
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+    }
+
+    .navbar {
+        background-color: #333;
+        color: #61dafb;
+        padding: 5px 20px; /* Further reduced padding for smaller height */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        height: 50px; /* Smaller navbar height */
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .logo h1 {
+        margin: 0;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-right: 20px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: #333;
+        padding: 4px 8px;
+        border-radius: 25px;
+    }
+
+    .search-bar input[type="text"] {
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 150px;
+        color: #fff;
+    }
+
+    .search-bar input[type="text"]::placeholder {
+        color: #bbb;
+    }
+
+    .search-icon {
+        background-color: #61dafb;
+        border: none;
+        padding: 5px 10px; /* Adjusted padding for better size */
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #fff; /* Changed color to white */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-icon:hover {
+        background-color: #20232a;
+        color: #61dafb;
+        transform: scale(1.05);
+    }
+
+    .language-selector {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector select {
+        background-color: transparent;
+        border: 2px solid #61dafb;
+        color: #fff;
+        padding: 5px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        appearance: none;
+        cursor: pointer;
+        transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .language-selector select:hover {
+        border-color: #fff;
+        color: #61dafb;
+    }
+
+    .language-selector::after {
+        content: '▼';
+        position: absolute;
+        right: 15px;
+        font-size: 10px;
+        color: #61dafb;
+        pointer-events: none;
+    }
+
+    .language-selector select:hover::after {
+        color: #fff;
+    }
+        .background {
+            position: relative;
+            height: 500px;
+            width: 100%;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .short_b {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(46, 164, 255, 0.62);
+            color: white;
+            font-size: 30px;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 15px;
+            z-index: 1;
+            height: 55px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            margin: 20px;
+            min-width: 150px;
+        }
+
+        footer .footer-section h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: white;
+        }
+
+        footer .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        footer .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons a:hover {
+            color: #00b3ff;
+        }
+
+        footer .download-app {
+            margin-top: 20px;
+        }
+
+        footer .download-app img {
+            width: 120px;
+            margin-right: 10px;
+        }
+
+        .terms-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            color: #aaa;
+            align-items: center;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+        }
+
+        .terms-left {
+            text-align: left;
+        }
+
+        .terms-right {
+            text-align: right;
+        }
+
+        .terms-left a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .terms-left a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .terms-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .terms-left, .terms-right {
+                text-align: center;
+            }
+        }
+       
+  .box-7
+{
+    height: 300px;
+    width: 200px;
+    background-color: yellow;
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    
+    
+  
+}
+.box-8
+{
+    height: 300px;
+    width: 230px;
+    background-color: darkgrey;
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    
+    
+}
+.box-9
+{
+    height: 300px;
+    width: 230px;
+  
+    background-color: orange;
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+  
+}
+.box-10
+{
+    height: 300px;
+    width: 230px;
+    background-color: purple;
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    
+}
+.box-11
+{
+    height: 300px;
+    width: 230px;
+    background-color: lightblue;
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    
+}
+
+.fa-x-twitter
+{
+    font-size: 60px;
+    margin-left: 70px;
+    margin-top: 70px;
+}
+
+.fa-facebook-f
+
+{   
+    font-size: 60px;
+    margin-left:80px;
+    margin-top: 70px;
+    color: white;
+    
+}
+.fa-instagram
+{
+    font-size: 60px;
+    margin-left: 70px;
+    margin-top: 70px;
+    color: white;
+}
+.fa-location-dot
+{
+    font-size: 60px;
+    margin-left: 70px;
+    margin-top: 70px;
+   
+}
+
+.fa-envelope 
+{
+    font-size: 60px;
+    margin-left: 70px;
+    margin-top: 70px;
+    color: white
+} 
+ .Upper-border
+ {
+    height: 70px ;
+    width: 1000 px;
+    background-color: blue;
+ }
+ @import url('https://fonts.googleapis.com/css2?family=Lexend+Peta&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend Peta', sans-serif;
+    box-sizing: border-box;
+}
+.contact{
+    position: relative;
+    min-height: 100px;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    background-size: cover;
+
+}
+.contact .content{
+    max-width: 800px;
+    text-align: center;
+}
+.contact .content h2{
+    font-size: 36px;
+    font-weight: 500;
+    color:rgb(143, 5, 42);
+    margin-bottom: 20px;
+}
+.contact .content p{
+    font-weight: 300;
+    color: black;
+}
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.container .contactInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.container .contactInfo .box{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+.container .contactInfo .box .icon{
+    min-width: 60px;
+    height: 60px;
+    background: papayawhip;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+}
+.container .contactInfo .box .text h3{
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color: rgb(143, 5, 42);
+    /* flex-direction: column; */
+    font-weight: 500;
+}
+.container .contactInfo .box .text p{
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color: black;
+    /* flex-direction: column; */
+    font-weight: 300;
+}
+.contactForm{
+    width: 70%;
+    padding: 40px;
+    margin-left: -175px;
+    margin-right: 90px;
+    margin-top: 100px;
+    background: papayawhip;
+
+}
+.contactForm h2{
+    font-size: 30px;
+    color: #333;
+    font-weight: 500;
+}
+.contactForm .inputBox{
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+.contactForm .inputBox input,
+.contactForm .inputBox textarea{
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    resize: none;
+}
+.contactForm .inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    pointer-events: none;
+    transition: 0.5s;
+    color: #666;
+}
+    .contact-section {
+        width: 100%;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 3rem 1rem;
+      }
+      
+      .contact-intro > * + * {
+        margin-top: 1rem;
+      }
+      
+      .contact-title {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+      }
+      
+      .contact-description {
+        color: rgb(107 114 128);
+      }
+      
+      .form-group-container {
+        display: grid;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .form-label {
+        margin-bottom: 0.5rem;
+      }
+      
+      .form-input,
+      .form-textarea {
+        padding: 0.5rem;
+        border: 1px solid #e5e7eb;
+        display: flex;
+        height: 2.5rem;
+        width: 100%;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      
+      .form-input::placeholder,
+      .form-textarea:focus-visible {
+        color: #6b7280;
+      }
+      
+      .form-input:focus-visible,
+      .form-textarea:focus-visible {
+        outline: 2px solid #2563eb;
+        outline-offset: 2px;
+      }
+      
+      .form-textarea {
+        min-height: 120px;
+      }
+      
+      .form-submit {
+        width: 100%;
+        margin-top: 1.2rem;
+        background-color:#00b3ff;
+        border-color:#00b3ff ;
+        color: #fff;
+        padding: 13px 5px;
+        border-radius: 0.375rem;
+      }
+      .form-submit:hover{
+        box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+      }
+      .identity-verify button{
+            padding: 10px 20px;
+            background-color: #00b3ff;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            margin-top: 100px;
+      }
+      .identity-verify button a{
+        text-decoration: none;
+        color: white;
+      }
+      .identity-verify button:hover{
+        box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+      }
+      @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .contactForm, .contactInfo {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+   /* Responsive styling */
+   @media (max-width: 1200px) {
+            /* For tablets and smaller desktops */
+            .search-bar input[type="text"] {
+                width: 120px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .port {
+                max-width: 500px;
+            }
+
+            footer {
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* For tablets and smaller screens */
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .port {
+                max-width: 400px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                margin: 10px 0;
+            }
+
+            .terms-container {
+                flex-direction: column;
+            }
+
+            .terms-left, .terms-right {
+                text-align: center;
+            }
+
+            footer .download-app img {
+                width: 100px;
+            }
+        }
+         /* Hamburger Menu Styling */
+         .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Mobile menu (initially hidden) */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #333;
+            width: 100%;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .mobile-nav a {
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #444;
+            color: #61dafb;
+        }
+
+        .mobile-nav a.active {
+            color: #61dafb;
+            background-color: #444;
+        }
+        
+        /* Contact specific responsive styles */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .contact-map {
+            width: 100%;
+            height: 400px;
+            margin-top: 30px;
+        }
+        
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info, .contact-form {
+                min-width: 100%;
+                padding: 15px;
+            }
+            
+            .contact-map {
+                height: 250px;
+            }
+            
+            .nav-container {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 485px) {
+            .logo {
+                margin-right: auto;
+            }
+
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .mobile-nav.active {
+                display: flex;
+            }
+            
+            .contact-container {
+                padding: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="uy.jpeg" alt="Logo" />
+        <h1><!-- Logo text will be updated --></h1>
+      </div>
+  
+      <div class="nav-container">
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="goals.html">Goals</a></li>
+        </ul>
+      </div>
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="goals.html">Goals</a>
+      </div>
+  
+      <div class="search-bar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for Courses"
+        />
+        <button class="search-icon" onclick="performSearch()">🔍</button>
+      </div>
+  
+      <div class="language-selector">
+        <select id="languageSelect" onchange="updateLanguage()">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="zh">Chinese</option>
+        
+        </select>
+      </div>
+    </div>
+  
+    <div class="background">
+      <img src="Your paragraph text.png" alt="Image description" />
+      <div class="short_b">
+        Get in touch with us, join our team, and let's work together to brighten your future
+      </div>
+    </div>
+  
+    <!-- Contact Section -->
+    <div class="contact-container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <div class="contact-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+              <h3>Address</h3>
+                    <p>I-10/4, Islamabad, Pakistan 44000</p>
+            </div>
+          </div>
+            <div class="contact-info-item">
+                <i class="fas fa-phone"></i>
+                <div>
+              <h3>Phone</h3>
+              <p>+923456515537</p>
+            </div>
+          </div>
+            <div class="contact-info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+              <h3>Email</h3>
+              <p>hiringforbenifits24@gmail.com</p>
+            </div>
+          </div>
+          </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Send Message</h2>
+            <form id="contactForm">
+              <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+              </div>
+              <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="+923105581718" required>
+              </div>
+              <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your message" required></textarea>
+              </div>
+                <button type="submit" class="send-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+  
+    <footer>
+      <div class="footer-section">
+        <h3>HR Development</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a href="OurTeam.html">Our Team</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="news.html">News</a></li>
+          <li><a href="rating.html">Rate Us</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>We Provide</h3>
+        <ul>
+          <li><a href="FooterGD.html">Graphic Designer</a></li>
+          <li><a href="FooterWD.html">Web Developer</a></li>
+          <li><a href="FooterPP.html">PowerPoint Expert</a></li>
+          <li><a href="FooterDE.html">Data Entry Expert</a></li>
+          <li><a href="FooterAW.html">Assignment Work</a></li>
+          <li><a href="FooterWE.html">MS Word | MS Excel</a></li>
+          <li><a href="FootFSD.html">Full Stack Developer</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Contact Us On</h3>
+        <div class="download-app">
+          <p>hiringforbenifits24@gmail.com</p>
+          <p>+923456515537</p>
+        </div>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/groups/875306051134134/?rdid=rUczcvIl5Yc1zqpf&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2FNf3VXYDCrbwNpZ62%2F" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+          </a>
+          <a href="https://www.instagram.com/hr_development24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+          </a>
+          <a href="https://www.youtube.com/@hamzasirang" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" />
+          </a>
+          <a href="https://chat.whatsapp.com/KgcL6pl51gx0D6ZVnjwkmk" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+          </a>
+        </div>
+      </div>
+  
+      <div class="terms-container">
+        <div class="terms-left">
+          <p>
+            <a href="#">Terms of use</a> | 
+            <a href="#">Privacy</a> | 
+            <a href="#">Use of cookies</a>
+          </p>
+          <p>© 2024 HR_Development Company</p>
+        </div>
+      </div>
+    </footer>
+  
+    <!-- JavaScript -->
+    <script>
+      // Toggle mobile navigation menu
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.classList.toggle('active');
+      }
+  
+      // Translations for six languages
+      const translations = {
+        en: {
+          logo: "Development",
+          navHome: "Home",
+          navAbout: "About",
+          navContact: "Contact",
+          navGoals: "Goals",
+          searchPlaceholder: "Search for Courses",
+          short_b: "Get in touch with us, join our team, and let's work together to brighten your future",
+          contactHeading: "Contact Us",
+          contactDescription: "Get in touch with us, join our team, and let's work together to brighten your future...",
+          addressTitle: "Address",
+          addressText: "I-10/4,\nIslamabad, Pakistan\n44000",
+          phoneTitle: "Phone",
+          phoneText: "+923456515537",
+          emailTitle: "Email",
+          emailText: "hiringforbenifits24@gmail.com",
+          verifyButton: "Verify Identity",
+          resumeButton: "Your Resume",
+          formName: "Name",
+          formEmail: "Email",
+          formPhone: "Phone",
+          formMessage: "Message",
+          formNamePlaceholder: "Your name",
+          formEmailPlaceholder: "Your email",
+          formPhonePlaceholder: "+923105361718",
+          formMessagePlaceholder: "Your message",
+          formSubmit: "Send Message",
+          footerTitle: "HR Development",
+          footerHome: "Home",
+          footerAbout: "About",
+          footerContact: "Contact",
+          footerGoals: "Goals",
+          footerTeam: "Our Team",
+          footerCommunity: "Community",
+          footerNews: "News",
+          footerRate: "Rate Us",
+          footerProvide: "We Provide",
+          footerGD: "Graphic Designer",
+          footerWD: "Web Developer",
+          footerPP: "PowerPoint Expert",
+          footerDE: "Data Entry Expert",
+          footerAW: "Assignment Work",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "Full Stack Developer",
+          footerContactOn: "Contact Us On",
+          footerFollow: "Follow Us",
+          termsUse: "Terms of use",
+          privacy: "Privacy",
+          cookies: "Use of cookies",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        es: {
+          logo: "Desarrollo",
+          navHome: "Inicio",
+          navAbout: "Acerca de",
+          navContact: "Contacto",
+          navGoals: "Metas",
+          searchPlaceholder: "Buscar Cursos",
+          short_b: "Ponte en contacto con nosotros, únete a nuestro equipo, y trabajemos juntos para iluminar tu futuro",
+          contactHeading: "Contáctanos",
+          contactDescription: "Ponte en contacto con nosotros, únete a nuestro equipo, y trabajemos juntos para iluminar tu futuro...",
+          addressTitle: "Dirección",
+          addressText: "I-10/4,\nIslamabad, Pakistán\n44000",
+          phoneTitle: "Teléfono",
+          phoneText: "+923456515537",
+          emailTitle: "Correo electrónico",
+          emailText: "hiringforbenifits24@gmail.com",
+          verifyButton: "Verificar Identidad",
+          resumeButton: "Tu Currículum",
+          formName: "Nombre",
+          formEmail: "Correo electrónico",
+          formPhone: "Teléfono",
+          formMessage: "Mensaje",
+          formNamePlaceholder: "Tu nombre",
+          formEmailPlaceholder: "Tu correo electrónico",
+          formPhonePlaceholder: "+923105361718",
+          formMessagePlaceholder: "Tu mensaje",
+          formSubmit: "Enviar Mensaje",
+          footerTitle: "HR Desarrollo",
+          footerHome: "Inicio",
+          footerAbout: "Acerca de",
+          footerContact: "Contacto",
+          footerGoals: "Metas",
+          footerTeam: "Nuestro Equipo",
+          footerCommunity: "Comunidad",
+          footerNews: "Noticias",
+          footerRate: "Califícanos",
+          footerProvide: "Lo que ofrecemos",
+          footerGD: "Diseñador Gráfico",
+          footerWD: "Desarrollador Web",
+          footerPP: "Experto PowerPoint",
+          footerDE: "Experto en Entrada de Datos",
+          footerAW: "Trabajo de Asignación",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "Desarrollador Full Stack",
+          footerContactOn: "Contáctanos",
+          footerFollow: "Síguenos",
+          termsUse: "Términos de uso",
+          privacy: "Privacidad",
+          cookies: "Uso de cookies",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        fr: {
+          logo: "Développement",
+          navHome: "Accueil",
+          navAbout: "À propos",
+          navContact: "Contact",
+          navGoals: "Objectifs",
+          searchPlaceholder: "Rechercher des cours",
+          short_b: "Contactez-nous, rejoignez notre équipe et travaillons ensemble pour éclairer votre avenir",
+          contactHeading: "Contactez-nous",
+          contactDescription: "Contactez-nous, rejoignez notre équipe et travaillons ensemble pour éclairer votre avenir...",
+          addressTitle: "Adresse",
+          addressText: "I-10/4,\nIslamabad, Pakistan\n44000",
+          phoneTitle: "Téléphone",
+          phoneText: "+923456515537",
+          emailTitle: "Email",
+          emailText: "hiringforbenifits24@gmail.com",
+          verifyButton: "Vérifier l'identité",
+          resumeButton: "Votre CV",
+          formName: "Nom",
+          formEmail: "Email",
+          formPhone: "Téléphone",
+          formMessage: "Message",
+          formNamePlaceholder: "Votre nom",
+          formEmailPlaceholder: "Votre email",
+          formPhonePlaceholder: "+923105361718",
+          formMessagePlaceholder: "Votre message",
+          formSubmit: "Envoyer le message",
+          footerTitle: "HR Développement",
+          footerHome: "Accueil",
+          footerAbout: "À propos",
+          footerContact: "Contact",
+          footerGoals: "Objectifs",
+          footerTeam: "Notre Équipe",
+          footerCommunity: "Communauté",
+          footerNews: "Actualités",
+          footerRate: "Évaluez-nous",
+          footerProvide: "Nos services",
+          footerGD: "Graphiste",
+          footerWD: "Développeur Web",
+          footerPP: "Expert PowerPoint",
+          footerDE: "Expert en saisie de données",
+          footerAW: "Travaux d'assignation",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "Développeur Full Stack",
+          footerContactOn: "Contactez-nous",
+          footerFollow: "Suivez-nous",
+          termsUse: "Conditions d'utilisation",
+          privacy: "Confidentialité",
+          cookies: "Utilisation des cookies",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        zh: {
+          logo: "发展",
+          navHome: "首页",
+          navAbout: "关于",
+          navContact: "联系",
+          navGoals: "目标",
+          searchPlaceholder: "搜索课程",
+          short_b: "联系我们，加入我们的团队，让我们携手共创光明的未来",
+          contactHeading: "联系我们",
+          contactDescription: "联系我们，加入我们的团队，让我们携手共创光明的未来...",
+          addressTitle: "地址",
+          addressText: "I-10/4,\n伊斯兰堡, 巴基斯坦\n44000",
+          phoneTitle: "电话",
+          phoneText: "+923456515537",
+          emailTitle: "电子邮件",
+          emailText: "hiringforbenifits24@gmail.com",
+          verifyButton: "验证身份",
+          resumeButton: "您的简历",
+          formName: "姓名",
+          formEmail: "电子邮件",
+          formPhone: "电话",
+          formMessage: "信息",
+          formNamePlaceholder: "您的姓名",
+          formEmailPlaceholder: "您的电子邮件",
+          formPhonePlaceholder: "+923105361718",
+          formMessagePlaceholder: "您的信息",
+          formSubmit: "发送信息",
+          footerTitle: "HR 发展",
+          footerHome: "首页",
+          footerAbout: "关于",
+          footerContact: "联系",
+          footerGoals: "目标",
+          footerTeam: "我们的团队",
+          footerCommunity: "社区",
+          footerNews: "新闻",
+          footerRate: "评价我们",
+          footerProvide: "我们提供",
+          footerGD: "平面设计师",
+          footerWD: "网页开发",
+          footerPP: "PowerPoint 专家",
+          footerDE: "数据录入专家",
+          footerAW: "作业工作",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "全栈开发者",
+          footerContactOn: "联系我们",
+          footerFollow: "关注我们",
+          termsUse: "使用条款",
+          privacy: "隐私",
+          cookies: "使用 cookies",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        ur: {
+          logo: "ڈیولپمنٹ",
+          navHome: "ہوم",
+          navAbout: "متعارف",
+          navContact: "رابطہ",
+          navGoals: "مقاصد",
+          searchPlaceholder: "کورسز تلاش کریں",
+          short_b: "ہم سے رابطہ کریں، ہماری ٹیم میں شامل ہوں، اور مل کر اپنے مستقبل کو روشن کریں",
+          contactHeading: "ہم سے رابطہ کریں",
+          contactDescription: "ہم سے رابطہ کریں، ہماری ٹیم میں شامل ہوں، اور مل کر اپنے مستقبل کو روشن کریں...",
+          addressTitle: "پتہ",
+          addressText: "I-10/4,\nاسلام آباد، پاکستان\n44000",
+          phoneTitle: "فون",
+          phoneText: "+923456515537",
+          emailTitle: "ای میل",
+          emailText: "hiringforbenifits24@gmail.com",
+          verifyButton: "شناخت کی تصدیق کریں",
+          resumeButton: "آپ کا ریزیومے",
+          formName: "نام",
+          formEmail: "ای میل",
+          formPhone: "فون",
+          formMessage: "پیغام",
+          formNamePlaceholder: "آپ کا نام",
+          formEmailPlaceholder: "آپ کا ای میل",
+          formPhonePlaceholder: "+923105361718",
+          formMessagePlaceholder: "آپ کا پیغام",
+          formSubmit: "پیغام بھیجیں",
+          footerTitle: "HR ڈیولپمنٹ",
+          footerHome: "ہوم",
+          footerAbout: "متعارف",
+          footerContact: "رابطہ",
+          footerGoals: "مقاصد",
+          footerTeam: "ہماری ٹیم",
+          footerCommunity: "کمیونٹی",
+          footerNews: "خبریں",
+          footerRate: "ہمیں ریٹ کریں",
+          footerProvide: "ہم فراہم کرتے ہیں",
+          footerGD: "گرافک ڈیزائنر",
+          footerWD: "ویب ڈویلپر",
+          footerPP: "پاورپوائنٹ ماہر",
+          footerDE: "ڈیٹا انٹری ماہر",
+          footerAW: "اسائنمنٹ ورک",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "فل اسٹیک ڈویلپر",
+          footerContactOn: "ہم سے رابطہ کریں",
+          footerFollow: "فالو کریں",
+          termsUse: "استعمال کی شرائط",
+          privacy: "رازداری",
+          cookies: "کوکیز کا استعمال",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        ar: {
+          logo: "التطوير",
+          navHome: "الرئيسية",
+          navAbout: "حول",
+          navContact: "اتصل بنا",
+          navGoals: "الأهداف",
+          searchPlaceholder: "ابحث عن الدورات",
+          short_b: "تواصل معنا، انضم إلى فريقنا، ودعنا نعمل معًا لتنوير مستقبلك",
+          contactHeading: "اتصل بنا",
+          contactDescription: "تواصل معنا، انضم إلى فريقنا، ودعنا نعمل معًا لتنوير مستقبلك...",
+          addressTitle: "العنوان",
+          addressText: "I-10/4,\nإسلام آباد، باكستان\n44000",
+          phoneTitle: "الهاتف",
+          phoneText: "+923456515537",
+          emailTitle: "البريد الإلكتروني",
+          emailText: "hiringforbenifits24@gmail.com",
+          verifyButton: "تحقق من الهوية",
+          resumeButton: "سيرتك الذاتية",
+          formName: "الاسم",
+          formEmail: "البريد الإلكتروني",
+          formPhone: "الهاتف",
+          formMessage: "الرسالة",
+          formNamePlaceholder: "اسمك",
+          formEmailPlaceholder: "بريدك الإلكتروني",
+          formPhonePlaceholder: "+923105361718",
+          formMessagePlaceholder: "رسالتك",
+          formSubmit: "أرسل الرسالة",
+          footerTitle: "HR التطوير",
+          footerHome: "الرئيسية",
+          footerAbout: "حول",
+          footerContact: "اتصل بنا",
+          footerGoals: "الأهداف",
+          footerTeam: "فريقنا",
+          footerCommunity: "المجتمع",
+          footerNews: "الأخبار",
+          footerRate: "قيمنا",
+          footerProvide: "نقدم",
+          footerGD: "مصمم جرافيك",
+          footerWD: "مطور ويب",
+          footerPP: "خبير باوربوينت",
+          footerDE: "خبير إدخال البيانات",
+          footerAW: "عمل المهمة",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "مطور متكامل",
+          footerContactOn: "اتصل بنا",
+          footerFollow: "تابعنا",
+          termsUse: "شروط الاستخدام",
+          privacy: "الخصوصية",
+          cookies: "استخدام ملفات تعريف الارتباط",
+          footerCopyright: "© 2024 HR_Development Company"
+        }
+      };
+  
+      function updateLanguage() {
+        // Get the selected language from the dropdown
+        const lang = document.getElementById("languageSelect").value;
+  
+        // Update Navbar & Logo text
+        document.querySelector(".logo h1").textContent = translations[lang].logo;
+        document.querySelector(".nav-links li a[href='home.html']").textContent = translations[lang].navHome;
+        document.querySelector(".nav-links li a[href='about.html']").textContent = translations[lang].navAbout;
+        document.querySelector(".nav-links li a[href='contact.html']").textContent = translations[lang].navContact;
+        document.querySelector(".nav-links li a[href='goals.html']").textContent = translations[lang].navGoals;
+  
+        // Update Mobile Navigation
+        document.querySelector("#mobileNav a[href='home.html']").textContent = translations[lang].navHome;
+        document.querySelector("#mobileNav a[href='about.html']").textContent = translations[lang].navAbout;
+        document.querySelector("#mobileNav a[href='contact.html']").textContent = translations[lang].navContact;
+        document.querySelector("#mobileNav a[href='goals.html']").textContent = translations[lang].navGoals;
+  
+        // Update search input placeholder
+        document.getElementById("searchInput").setAttribute("placeholder", translations[lang].searchPlaceholder);
+  
+        // Update background text
+        document.querySelector(".background .short_b").textContent = translations[lang].short_b;
+  
+        // Update Contact Section Heading & Description
+        document.querySelector(".contact .content h2").textContent = translations[lang].contactHeading;
+        document.querySelector(".contact .content p").textContent = translations[lang].contactDescription;
+  
+        // Update Contact Info Boxes
+        const boxes = document.querySelectorAll(".contactInfo .box");
+        if (boxes.length >= 3) {
+          boxes[0].querySelector("h3").textContent = translations[lang].addressTitle;
+          boxes[0].querySelector("p").textContent = translations[lang].addressText;
+          boxes[1].querySelector("h3").textContent = translations[lang].phoneTitle;
+          boxes[1].querySelector("p").textContent = translations[lang].phoneText;
+          boxes[2].querySelector("h3").textContent = translations[lang].emailTitle;
+          boxes[2].querySelector("p").textContent = translations[lang].emailText;
+        }
+  
+        // Update Identity Verify Buttons
+        const identityButtons = document.querySelectorAll(".identity-verify button a");
+        if (identityButtons.length >= 2) {
+          identityButtons[0].textContent = translations[lang].verifyButton;
+          identityButtons[1].textContent = translations[lang].resumeButton;
+        }
+  
+        // Update Contact Form Labels and Placeholders
+        document.querySelector("label[for='name']").textContent = translations[lang].formName;
+        document.getElementById("name").setAttribute("placeholder", translations[lang].formNamePlaceholder);
+        document.querySelector("label[for='email']").textContent = translations[lang].formEmail;
+        document.getElementById("email").setAttribute("placeholder", translations[lang].formEmailPlaceholder);
+        document.querySelector("label[for='phone']").textContent = translations[lang].formPhone;
+        document.getElementById("phone").setAttribute("placeholder", translations[lang].formPhonePlaceholder);
+        document.querySelector("label[for='message']").textContent = translations[lang].formMessage;
+        document.getElementById("message").setAttribute("placeholder", translations[lang].formMessagePlaceholder);
+        document.querySelector(".contactForm button").textContent = translations[lang].formSubmit;
+  
+        // Update Footer Section 1 (HR Development & links)
+        const footerLinks1 = document.querySelectorAll(".footer-section")[0].querySelectorAll("ul li a");
+        if (footerLinks1.length >= 5) {
+          footerLinks1[0].textContent = translations[lang].footerHome;
+          footerLinks1[1].textContent = translations[lang].footerAbout;
+          footerLinks1[2].textContent = translations[lang].footerContact;
+          footerLinks1[3].textContent = translations[lang].footerGoals;
+          footerLinks1[4].textContent = translations[lang].footerTeam;
+        }
+  
+        // Update Footer Section 2 (Community)
+        const footerLinks2 = document.querySelectorAll(".footer-section")[1].querySelectorAll("ul li a");
+        if (footerLinks2.length >= 2) {
+          footerLinks2[0].textContent = translations[lang].footerNews;
+          footerLinks2[1].textContent = translations[lang].footerRate;
+        }
+  
+        // Update Footer Section 3 (We Provide)
+        const footerLinks3 = document.querySelectorAll(".footer-section")[2].querySelectorAll("ul li a");
+        if (footerLinks3.length >= 7) {
+          footerLinks3[0].textContent = translations[lang].footerGD;
+          footerLinks3[1].textContent = translations[lang].footerWD;
+          footerLinks3[2].textContent = translations[lang].footerPP;
+          footerLinks3[3].textContent = translations[lang].footerDE;
+          footerLinks3[4].textContent = translations[lang].footerAW;
+          footerLinks3[5].textContent = translations[lang].footerWE;
+          footerLinks3[6].textContent = translations[lang].footerFSD;
+        }
+  
+        // Update Footer Section 4 (Contact Us On)
+        const footerSec4 = document.querySelectorAll(".footer-section")[3];
+        if (footerSec4) {
+          footerSec4.querySelector("h3").textContent = translations[lang].footerContactOn;
+        }
+  
+        // Update Footer Section 5 (Follow Us)
+        const footerSec5 = document.querySelectorAll(".footer-section")[4];
+        if (footerSec5) {
+          footerSec5.querySelector("h3").textContent = translations[lang].footerFollow;
+        }
+  
+        // Update Terms and Conditions Section
+        const termsLinks = document.querySelector(".terms-left").querySelectorAll("a");
+        if (termsLinks.length >= 3) {
+          termsLinks[0].textContent = translations[lang].termsUse;
+          termsLinks[1].textContent = translations[lang].privacy;
+          termsLinks[2].textContent = translations[lang].cookies;
+        }
+        document.querySelector(".terms-left p:last-of-type").textContent = translations[lang].footerCopyright;
+      }
+  
+      // Set default language (English) when the page loads
+      window.onload = function() {
+        document.getElementById("languageSelect").value = "en";
+        updateLanguage();
+      };
+    </script>
+  </body>
+</html>

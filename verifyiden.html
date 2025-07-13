@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identity Verification</title>
+  <style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+}
+
+.container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-label {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: #0056b3;
+}
+
+#photo-upload {
+    display: none;
+}
+
+.upload-btn {
+    padding: 0.5rem 1.5rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #218838;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verify Identity</h1>
+    <p>Please upload your photo and we will get back to you.</p>
+
+    <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="access_key" value="dc966817-7a58-4bde-90da-fe63c5c629eb">
+        <label for="photo-upload" class="upload-label">Choose a photo</label>
+        <input type="file" id="photo-upload" name="photo" accept="image/*" required>
+        <button type="submit" class="upload-btn">Upload Photo</button>
+    </form>
+</div>
+</body>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+</html>

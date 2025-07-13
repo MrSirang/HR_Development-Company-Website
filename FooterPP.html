@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Development</title>
+    <style>
+         body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .navbar {
+        background-color: #333;
+        color: #61dafb;
+        padding: 5px 20px; /* Further reduced padding for smaller height */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        height: 50px; /* Smaller navbar height */
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .logo h1 {
+        margin: 0;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-right: 20px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: #333;
+        padding: 4px 8px;
+        border-radius: 25px;
+    }
+
+    .search-bar input[type="text"] {
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 150px;
+        color: #fff;
+    }
+
+    .search-bar input[type="text"]::placeholder {
+        color: #bbb;
+    }
+
+    .search-icon {
+        background-color: #61dafb;
+        border: none;
+        padding: 5px 10px; /* Adjusted padding for better size */
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #fff; /* Changed color to white */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-icon:hover {
+        background-color: #20232a;
+        color: #61dafb;
+        transform: scale(1.05);
+    }
+
+    .language-selector {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector select {
+        background-color: transparent;
+        border: 2px solid #61dafb;
+        color: #fff;
+        padding: 5px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        appearance: none;
+        cursor: pointer;
+        transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .language-selector select:hover {
+        border-color: #fff;
+        color: #61dafb;
+    }
+
+    .language-selector::after {
+        content: '▼';
+        position: absolute;
+        right: 15px;
+        font-size: 10px;
+        color: #61dafb;
+        pointer-events: none;
+    }
+
+    .language-selector select:hover::after {
+        color: #fff;
+    }
+
+        .background {
+            position: relative;
+            height: 500px;
+            width: 100%;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .short_b {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(46, 164, 255, 0.62);
+            color: white;
+            font-size: 30px;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 15px;
+            z-index: 1;
+            height: 55px;
+        }
+
+        .neumorphism-card {
+            width: 300px;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            border-radius: 20px;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2), -10px -10px 30px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        .neumorphism-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .neumorphism-card h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .neumorphism-card button {
+            padding: 10px 20px;
+            background-color: #00b3ff;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .neumorphism-card button:hover {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        .port {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .port h1 {
+            font-size: 26px;
+            color: #00b3ff;
+            margin-bottom: 10px;
+        }
+
+        .port p {
+            margin-bottom: 20px;
+        }
+
+        .port a {
+            text-decoration: none;
+            color: white;
+            background-color: #00b3ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .port a:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+        .neumorphism-card button a{
+            text-decoration: none;
+            color: white;
+        }
+         body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #333;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .service {
+            width: 25%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .service-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+        }
+
+        .service-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .service-description {
+            text-align: center;
+        }
+
+        .service-description p {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            display: block;
+            width: 150px;
+            padding: 10px 20px;
+            margin: 20px auto;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+        body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.left {
+  width: 45%;
+}
+
+.right {
+  width: 45%;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.filter-item {
+  margin: 0 10px;
+}
+
+.filter-item a {
+  text-decoration: none;
+  color: #333;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.filter a {
+  color: #555;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.filter a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #555;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            margin: 20px;
+            min-width: 150px;
+        }
+
+        footer .footer-section h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: white;
+        }
+
+        footer .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        footer .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons a:hover {
+            color: #00b3ff;
+        }
+
+        footer .download-app {
+            margin-top: 20px;
+        }
+
+        footer .download-app img {
+            width: 120px;
+            margin-right: 10px;
+        }
+
+        .terms-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            color: #aaa;
+            align-items: center;
+        }
+
+        .terms-left {
+            text-align: left;
+        }
+
+        .terms-right {
+            text-align: right;
+        }
+
+        .terms-left a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .terms-left a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+       .card-content a {
+            text-decoration: none;
+            color: white;
+            background-color: #00b3ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .card-content a:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+           /* Responsive styling */
+      @media (max-width: 1200px) {
+            /* For tablets and smaller desktops */
+            .search-bar input[type="text"] {
+                width: 120px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .port {
+                max-width: 500px;
+            }
+
+            footer {
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* For tablets and smaller screens */
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .port {
+                max-width: 400px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                margin: 10px 0;
+            }
+
+            .terms-container {
+                flex-direction: column;
+            }
+
+            .terms-left, .terms-right {
+                text-align: center;
+            }
+
+            footer .download-app img {
+                width: 100px;
+            }
+        }
+         /* Hamburger Menu Styling */
+         .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Mobile menu (initially hidden) */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #333;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .mobile-nav a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #444;
+        }
+
+        @media (max-width: 485px) {
+            /* For mobile phones */
+            .logo{
+                margin-right: auto;
+            }
+            .logo h1 {
+                font-size: 18px;
+            }
+            .search-bar{
+                display: none;
+            }
+            .language-selector{
+                display: none;
+            }
+            .short_b {
+                font-size: 24px;
+            }
+            .filter {
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center align */
+    }
+
+    .filter a {
+        width: 100%; /* Make links full width */
+        text-align: center; /* Center text */
+    }
+            .hamburger{
+                margin-left: auto;
+                margin-top: -250px;
+            }
+
+            .port h1 {
+                font-size: 22px;
+            }
+
+            .neumorphism-card {
+                width: 260px;
+            }
+
+            .nav-container {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+                
+            }
+        
+        
+        
+
+    </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+        <img src="uy.jpeg" alt="Logo">
+        <h1>Development</h1>
+    </div>
+
+    <div class="nav-container">
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="goals.html">Goals</a></li>
+        </ul>
+    </div>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="goals.html">Goals</a>
+  </div>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for Courses">
+        <button class="search-icon" onclick="performSearch()">🔍</button>
+    </div>
+
+    <div class="language-selector">
+        <select>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>Chinese</option>
+           
+        </select>
+    </div>
+</div>
+    <div class="background">
+        <img src="pptai.jpg" alt="Image description">
+        <div class="short_b">
+            Empowering businesses with innovative design solutions for growth and success
+        </div>
+    </div>
+    <div class="container">
+        <div class="left">
+          <h2>Tips & Tricks for Killer Presentations</h2>
+          <p>How many slides is too many slides? Low on inspiration? We've got you covered. Read on for presentation advice from the experts.</p>
+        </div>
+      </div>
+      
+<div class="container">
+    <div class="filter">
+      <a href="https://www.bing.com/ck/a?!&&p=94e0eb999182c27c1b8e1d886e3f4147015450454271c568a0a56a5829910553JmltdHM9MTcyOTAzNjgwMA&ptn=3&ver=2&hsh=4&fclid=3b3233fa-1c17-678c-2e27-274f1d036645&psq=powerpoint+filter&u=a1aHR0cHM6Ly93d3cuc2xpZGVlZ2cuY29tL2Jsb2cvcG93ZXJwb2ludC10dXRvcmlhbHMvaG93LXRvLWFwcGx5LWZpbHRlcnMtdG8tdGhlLXBpY3R1cmVzLWluLXBvd2VycG9pbnQv&ntb=1">FILTER: ALL POSTS</a>
+      <a href="https://www.bing.com/ck/a?!&&p=ae428ef460669c1a2dba28943a91af3a10b26454e75637e7f3cda87fb7ef2516JmltdHM9MTcyOTAzNjgwMA&ptn=3&ver=2&hsh=4&fclid=3b3233fa-1c17-678c-2e27-274f1d036645&psq=powerpoint+skills&u=a1aHR0cHM6Ly8yNHNsaWRlcy5jb20vcHJlc2VudGJldHRlci9wb3dlcnBvaW50LTEwMS10aGUtdWx0aW1hdGUtdHV0b3JpYWwtZm9yLWJlZ2lubmVycw&ntb=1">PRESENTATION SKILLS</a>
+      <a href="https://www.bing.com/ck/a?!&&p=dda5aa6d67c02e637b343cfd571f2879b3fd01e3e4263410e7f23b8e30634a36JmltdHM9MTcyOTAzNjgwMA&ptn=3&ver=2&hsh=4&fclid=3b3233fa-1c17-678c-2e27-274f1d036645&psq=powerpoint+design+free&u=a1aHR0cHM6Ly9zbGlkZXNnby5jb20v&ntb=1">POWERPOINT DESIGN</a>
+      <a href="https://support.microsoft.com/en-us/office/add-animation-to-slides%E2%80%8B-7db07067-4d78-40b5-bc87-5ff4f5ff6ff7">POWERPOINT ANIMATION</a>
+      <a href="https://www.microsoft.com/en-us/microsoft-365/powerpoint?ocid=ORSEARCH_Bing&msockid=3b3233fa1c17678c2e27274f1d036645">POWERPOINT INDUSTRY</a>
+    </div>
+  
+    <div class="card">
+      <div class="card-content">
+        <h2 class="card-title">Presentation Skills</h2>
+        <p class="card-text">Learn how to create engaging presentations with our expert-approved tips and tricks.</p>
+      </div>
+      
+        <div class="card">
+          <img src="download (7).jfif" alt="HOW TO USE">
+          <div class="card-content">
+            <h2 class="card-title">HOW TO USE</h2>
+            <p class="card-text">PowerPoint Designer</p>
+          <a href="https://www.bing.com/ck/a?!&&p=00b3d8356753da7920f207172580c0be27632c77bf97ed27447d10127c7870e6JmltdHM9MTcyOTcyODAwMA&ptn=3&ver=2&hsh=4&fclid=3b3233fa-1c17-678c-2e27-274f1d036645&psq=how+to+install+powerpoint+in+laptop&u=a1aHR0cHM6Ly9zdXBwb3J0Lm1pY3Jvc29mdC5jb20vZW4tdXMvb2ZmaWNlL2Rvd25sb2FkLWFuZC1pbnN0YWxsLW9yLXJlaW5zdGFsbC1taWNyb3NvZnQtMzY1LW9yLW9mZmljZS0yMDIxLW9uLWEtcGMtb3ItbWFjLTQ0MTRlYWFmLTA0NzgtNDhiZS05YzQyLTIzYWRjNDcxNjY1OA&ntb=1">Download</a>
+          </div>
+        </div>
+      
+        <div class="card">
+          <img src="download (8).jfif" alt="POWERPOINT DESIGN">
+          <div class="card-content">
+            <h2 class="card-title">POWERPOINT DESIGN</h2>
+            <p class="card-text">Top Free Resources Used by a PowerPoint Design Agency</p>
+            <a href="https://www.bing.com/aclick?ld=e8TcUIJ7UcSyrU7dzr8aOcTTVUCUw6P-idpJX2yRzExebO4ed11dta9Gyv2L3Y4xHYlsywVrjycL2ulhgvpZsmHGIrk9pEKnroMw5-ZGcJhXKBOVqkddi1vjKWcI4w_Sex5ezmDF3oHA2Mv8RIyK4jKrDeb7cnaNJ2dCirbbTl5F2U6VAas_G07leGKmg_YQQDAg0S7Q&u=aHR0cHMlM2ElMmYlMmZlbGVtZW50cy5lbnZhdG8uY29tJTJmbHAlMmZ1bmxpbWl0ZWQtcG93ZXJwb2ludC10ZW1wbGF0ZXMlMmYlM2ZhZHBvc2l0aW9uJTNkJTI2bXNjbGtpZCUzZDE1ZDhjNmZmMmQyNzFlZDJhYjczYTFlNTFkNmVhZmQ4JTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkZWxlbWVudHNfYmluZ19lbl8yX2IlMjZ1dG1fdGVybSUzZHBvd2VycG9pbnQlMjUyMHRlbXBsYXRlcyUyNTIwZGVzaWduJTI2dXRtX2NvbnRlbnQlM2RlZV9wcF9kZXNpZ25fYg&rlid=15d8c6ff2d271ed2ab73a1e51d6eafd8&ntb=1">Use Design Here</a>
+          </div>
+        </div>
+      
+        <div class="card">
+          <img src="download (9).jfif" alt="PRESENTATION SKILLS">
+          <div class="card-content">
+            <h2 class="card-title">A GUIDE TO</h2>
+            <p class="card-text">Pre-recorded Presentations for Digital Conferences</p>
+           <a href="https://www.youtube.com/@hamzasirang">Vist Our youtube</a>
+          </div>
+        </div>
+      
+        <div class="card">
+          <img src="download (4).png" alt="POWERPOINT ANIMATION">
+          <div class="card-content">
+            <h2 class="card-title">FREE TEMPLATES</h2>
+            <p class="card-text">Free PowerPoint Animation Templates to Elevate Your Presentations</p>
+            <a href="https://www.bing.com/ck/a?!&&p=2752ba2e8ca83d3f239ce34dc14e20ea40aba57381da6a6cc2d104842c538b4eJmltdHM9MTcyOTcyODAwMA&ptn=3&ver=2&hsh=4&fclid=3b3233fa-1c17-678c-2e27-274f1d036645&psq=free+templates+for+powerpoint&u=a1aHR0cHM6Ly9zbGlkZXNnby5jb20v&ntb=1">Download Free</a>
+          </div>
+        </div>
+      
+        <div class="card">
+          <img src="images (3).jfif" alt="POWERPOINT INDUSTRY">
+          <div class="card-content">
+            <h2 class="card-title">THE FUTURE OF</h2>
+            <p class="card-text">The Future of PowerPoint: Trends and Innovations to Watch</p>
+           <a href="https://www.bing.com/ck/a?!&&p=6e69c00b84aea6a134a9eb2a86f9f89116758bf76101e4a7442e24dcbf948f8bJmltdHM9MTcyOTcyODAwMA&ptn=3&ver=2&hsh=4&fclid=3b3233fa-1c17-678c-2e27-274f1d036645&psq=THE+FUTURE+OF+Powerpoint&u=a1aHR0cHM6Ly9tZWRpdW0uY29tL0B2aXN1YWxzcGlkZXJzMC90aGUtZnV0dXJlLW9mLXBvd2VycG9pbnQtcHJlc2VudGF0aW9uLXNlcnZpY2VzLTkzN2IyYWMyYTBkZg&ntb=1">Read Here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <footer>
+        <div class="footer-section">
+            <h3>HR Development</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="OurTeam.html">Our Team</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Community</h3>
+            <ul>
+              <li><a href="news.html">News</a></li>
+              <li><a href="rating.html">Rate Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>We Provide</h3>
+            <ul>
+              <li><a href="FooterGD.html">Graphic Designer</a></li>
+              <li><a href="FooterWD.html">Web Developer </a></li>
+              <li><a href="FooterPP.html">PowerPoint Expert</a></li>
+              <li><a href="FooterDE.html">Data Entry Expert</a></li>
+              <li><a href="FooterAW.html">Assignment Work</a></li>
+              <li><a href="FooterWE.html">MS Word | MS Excel</a></li>
+              <li><a href="FootFSD.html">Full Stack Developer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Us On</h3>
+            <div class="download-app">
+              <p>hiringforbenifits24@gmail.com</p>
+              <p>+923456515537</p>
+            </div>
+        </div>
+
+        <!-- Social Icons Section -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/groups/875306051134134/?rdid=rUczcvIl5Yc1zqpf&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2FNf3VXYDCrbwNpZ62%2F" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/hr_development24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@hamzasirang" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+                </a>
+                <a href="https://chat.whatsapp.com/KgcL6pl51gx0D6ZVnjwkmk" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                </a>
+            </div>
+        </div>
+  <!-- Terms and Conditions Section -->
+        
+  <div class="terms-container" >
+        
+    <div class="terms-left"> 
+      <p>____________________________________________________________________________________________________________________________________________________</p>
+        <p><a href="#">Terms of use</a> | <a href="#">Privacy</a> | <a href="#">Use of cookies</a></p>
+        <p>© 2024 HR_Development Company</p>
+    </div>
+</div>
+    </footer>
+
+  <script>
+    function performSearch() {
+      // Get the input value and convert it to lowercase to handle case-insensitive search
+      var query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      // Check the search term and redirect to the corresponding page
+      if (query === "home") {
+        window.location.href = "home.html"; // Replace with your actual 'home' page URL
+      } else if (query === "about") {
+        window.location.href = "about.html"; // Replace with your actual 'about' page URL
+      } else if (query === "contact") {
+        window.location.href = "contact.html"; // Replace with your actual 'contact' page URL
+      } else if (query === "goals") {
+        window.location.href = "goals.html"; // Replace with your actual 'goals' page URL
+      } else {
+        // If no match, you can show an alert or take other actions
+        alert("Page not found. Please search for 'home', 'about', 'contact', or 'goals'.");
+      }
+    }
+    function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+  </script>
+</body>
+</html>

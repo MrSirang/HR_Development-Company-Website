@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <title>HR Development - Assignment Work</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 5px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 22px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f1f1f1;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-left: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 5px 10px;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .search-bar input[type="text"]::placeholder {
+            color: #aaa;
+        }
+
+        .search-icon {
+            background-color: white;
+            border: none;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .search-icon:hover {
+            background-color: #00b3ff;
+            transform: scale(1.05);
+        }
+
+        .language-selector {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .language-selector select {
+            background-color: transparent;
+            border: 2px solid #61dafb;
+            padding: 0.25rem 2rem 0.25rem 1rem;
+            color: white;
+            border-radius: 25px;
+            font-size: 14px;
+            appearance: none;
+            cursor: pointer;
+            transition: border-color 0.3s ease, color 0.3s ease;
+            min-width: 100px;
+        }
+
+        .language-selector::after {
+            content: '▼';
+            position: absolute;
+            right: 10px;
+            font-size: 10px;
+            color: #61dafb;
+            pointer-events: none;
+        }
+
+        .background {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .short_b {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-width: 100%;
+            background: rgba(46, 164, 255, 0.62);
+            color: white;
+            font-size: clamp(12px, 2vw, 24px);
+            text-align: center;
+            padding: 8px 15px;
+            z-index: 1;
+            height: auto;
+            min-height: 35px;
+            max-height: 100px;
+            box-sizing: border-box;
+            margin: 0;
+            overflow: hidden;
+            white-space: normal;
+            word-wrap: break-word;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .short_b {
+                font-size: clamp(11px, 1.8vw, 18px);
+                padding: 6px 12px;
+                min-height: 30px;
+                max-height: 80px;
+            }
+        }
+
+        @media (max-width: 485px) {
+            .short_b {
+                font-size: clamp(10px, 1.5vw, 14px);
+                padding: 5px 10px;
+                min-height: 25px;
+                max-height: 60px;
+            }
+        }
+
+        .neumorphism-card {
+            width: 300px;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            border-radius: 20px;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2), -10px -10px 30px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        .neumorphism-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .neumorphism-card h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .neumorphism-card button {
+            padding: 10px 20px;
+            background-color: #00b3ff;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .neumorphism-card button:hover {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            margin: 20px;
+            min-width: 150px;
+        }
+
+        footer .footer-section h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: white;
+        }
+
+        footer .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        footer .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons a:hover {
+            color: #00b3ff;
+        }
+
+        footer .download-app {
+            margin-top: 20px;
+        }
+
+        footer .download-app img {
+            width: 120px;
+            margin-right: 10px;
+        }
+
+        .terms-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            color: #aaa;
+            align-items: center;
+        }
+
+        .terms-left {
+            text-align: left;
+        }
+
+        .terms-right {
+            text-align: right;
+        }
+
+        .terms-left a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .terms-left a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+        
+        .port {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .port h1 {
+            font-size: 26px;
+            color: #00b3ff;
+            margin-bottom: 10px;
+        }
+
+        .port p {
+            margin-bottom: 20px;
+        }
+
+        .port a {
+            text-decoration: none;
+            color: white;
+            background-color: #00b3ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .port a:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+        .neumorphism-card button a{
+            text-decoration: none;
+            color: white;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .container p {
+            font-size: clamp(14px, 2vw, 18px);
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px auto;
+                padding: 15px;
+            }
+
+            .container h1 {
+                margin-bottom: 20px;
+            }
+
+            .container p {
+                margin-bottom: 12px;
+                padding: 0;
+            }
+
+            .button {
+                padding: 12px 24px;
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 485px) {
+            .container {
+                margin: 5px auto;
+                padding: 10px;
+            }
+
+            .container h1 {
+                margin-bottom: 15px;
+            }
+
+            .container p {
+                margin-bottom: 10px;
+                padding: 0;
+            }
+
+            .button {
+                padding: 10px 20px;
+                margin: 10px 0;
+                font-size: 14px;
+            }
+        }
+
+        /* Add hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #333;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 485px) {
+            .nav-container {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+        }
+
+        /* Add responsive footer styles */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .terms-container {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            margin: 0;
+            border-top: 1px solid #555;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .terms-left, .terms-right {
+            width: 100%;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .terms-left a, .terms-right p {
+            margin: 5px 0;
+            display: inline-block;
+        }
+
+        footer {
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+            min-width: 200px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .terms-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            footer {
+                padding: 15px;
+            }
+
+            .footer-section {
+                width: 100%;
+                margin: 10px 0;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 485px) {
+            .container {
+                padding: 10px;
+                width: 100%;
+                margin: 0;
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="uy.jpeg" alt="HR Logo">
+            <h1>Development</h1>
+        </div>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="goals.html">Goals</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search here...">
+                <button class="search-icon" onclick="performSearch()">🔍</button>
+            </div>
+            <div class="language-selector">
+                <select>
+                    <option value="english">English</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="french">French</option>
+                    <option value="chinese">Chinese</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <div class="background">
+        <img src="q.jpg" alt="Image description">
+        <div class="short_b">
+            Empowering businesses with innovative design solutions for growth and success
+        </div>
+    </div>
+    <div class="container">
+    <h1>Assignment Writing Service</h1>
+    <p>Did you just arrive on this page because you probably have an assignment due tomorrow or sometime later this week? Or, you arrived on this page because you cannot seem to kick-start writing your assignment?</p>
+    <p>Whatever the case may be, you can rest assured that we at Thesis Writing Help are here to facilitate you with our top-notch assignment writing service.</p>
+    <p>But First – Why Are Assignments So Important Anyway? Assignments generally serve plenty of reasons as well as benefits, for both the student and the teacher. Students usually fail to understand why they need to do assignments in particular because they are not properly explained the reasoning behind them.</p>
+    <p>If you as a student fail to understand the importance of assignments in particular, then simply read across the reasons we have listed for illustrating their importance.</p>
+    <p>Teachers usually give assignments so they can test the aptitude of students.Students focus on taking notes during classes for assignments, which enhances their note-taking skills.Writing assignments on the subject matter learned in class helps in revising and understanding the subject matter better.Researching for assignments helps in enhancing the researching power of the students.Assignments help to communicate ideas better and also develop the ability to frame arguments better.Students are able to improvise on their writing skills, analytical skills and critical thinking skills.Assignments are a helpful measure in determining the interest and academic performance of a student.</p>
+    <p>Did you read across the reasons we have listed down for you? Do you understand the importance of assignments now? If you considered assignments as just a burden on yourself, then these reasons should make you realise how these assignments are actually helping you out.</p>
+    <p>Stressed By Overburden? Searching for an Assignment Writing Service in Pakistan? As helpful as assignments are, students generally start disliking them when they become too many in number. Of course, too much of anything can become stressful and hectic.</p>
+    <p>Many students nowadays may resort to look for an assignment writing service in Pakistan on the internet, if they do not find a practical solution to their assignment woes.</p>
+    <p>A number of reasons can contribute to a student looking for external assistance, such as:</p>
+    <p>Having too many assignments at once to manage Lacking in the proficient writing skills for meeting the word count Facing issues in conducting proper research or remembering the subject notes Not being able to apply critical thinking skills for framing the arguments Feeling a general disinterest in their subject Having difficulty in finishing the assignment</p>
+    <p>As evident from the reasons listed, it is apparent that students are facing emotional upheavals of their own. It is not necessary that a student is lazy when they consider looking for the best assignment writing service on the internet.</p>
+    <p>Many times, students have some personal issues going on as well, leaving their mental health in a horrible state and with no energy left to manage so many assignments. Instead of risking failing, the student may consider trying to submit the assignment anyhow so they do not end up wasting another academic year.For that they tend to approach assignment writing services in Pakistan.</p>
+    <p>Your Prayers for 'Cheap Assignment Writing Service Near Me' Answered Today! We are aware of all the problems that trouble a student in the current era. Even with the availability of facilities like the internet, many students are still not able to manage their assignments overall.</p>
+    <p>To cater to such students, we provide assignment services for a variety of subjects and cover a wide range of academic levels as well. Whether a student is looking to buy dissertation or just needs to get their assignment proofread and edited, we can assure completion of all tasks.</p>
+    <p>As someone who is not aware of our brand, you must have the following ten questions in your mind:</p>
+    <p>Do you provide customised packages and pricing plans for each user?How can I trust that you are a legitimate brand?How will I verify the authenticity and originality of your content?What subjects do you cater to for assignment writing?Do you proofread and edit previously written assignments?What is the qualification of the people present in your team?Where do I place an order for my assignment?When can I contact the customer support team?Who is going to write my assignment for me?What will happen if I do not find your services satisfactory?</p>
+    <button class="button">Learn More</button>
+  </div>
+      
+  <footer>
+        <div class="footer-section">
+            <h3>HR Development</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="goals.html">Goals</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Community</h3>
+            <ul>
+                <li><a href="#">News</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>We Provide</h3>
+            <ul>
+                <li><a href="graphicsdesi.html">Graphic Designer</a></li>
+                <li><a href="webdeveloper.html">Web Developer </a></li>
+                <li><a href="ppe.html">PowerPoint Expert</a></li>
+                <li><a href="dataentry.html">Data Entry Expert</a></li>
+                <li><a href="assignment.html">Assignment Work</a></li>
+                <li><a href="mswe.html">MS Word | MS Excel</a></li>
+                <li><a href="stack.html">Full Stack Developer</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Us On</h3>
+            <div class="download-app">
+              <p>hiringforbenifits24@gmail.com</p>
+              <p>+923456515537</p>
+            </div>
+        </div>
+
+        <!-- Social Icons Section -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/groups/875306051134134/?rdid=rUczcvIl5Yc1zqpf&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2FNf3VXYDCrbwNpZ62%2F" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/hr_development24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@hamzasirang" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+                </a>
+                <a href="https://chat.whatsapp.com/KgcL6pl51gx0D6ZVnjwkmk" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                </a>
+            </div>
+        </div>
+
+        <!-- Terms and Conditions Section -->
+        <div class="terms-container">
+            <div class="terms-left"> 
+                <a href="#">Terms of use</a> | <a href="#">Privacy</a> | <a href="#">Use of cookies</a>
+            </div>   
+            <div class="terms-right">
+                <p>© 2024 HR_Development Company</p>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    function performSearch() {
+      // Get the input value and convert it to lowercase to handle case-insensitive search
+      var query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      // Check the search term and redirect to the corresponding page
+      if (query === "home") {
+        window.location.href = "home.html"; // Replace with your actual 'home' page URL
+      } else if (query === "about") {
+        window.location.href = "about.html"; // Replace with your actual 'about' page URL
+      } else if (query === "contact") {
+        window.location.href = "contact.html"; // Replace with your actual 'contact' page URL
+      } else if (query === "goals") {
+        window.location.href = "goals.html"; // Replace with your actual 'goals' page URL
+      } else {
+        // If no match, you can show an alert or take other actions
+        alert("Page not found. Please search for 'home', 'about', 'contact', or 'goals'.");
+      }
+    }
+  </script>
+</body>
+</html>

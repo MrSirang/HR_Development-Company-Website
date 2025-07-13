@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .reviews-container {
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 1rem;
+        }
+        .review-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+        .review-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        .review-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .review-card p {
+            font-size: 0.875rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .review-card .rating {
+            color: #FFBD13;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            display: none; /* Hidden initially */
+        }
+        #owner-access{
+            margin-top: -800px;
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="reviews-container" id="reviews-container"></div>
+
+<!-- Hidden owner login input for simplicity -->
+<div id="owner-access">
+    <input type="password" id="owner-password" placeholder="Enter Owner Password">
+    <button id="submit-password">Login as Owner</button>
+</div>
+
+<script>
+// Define the owner's password
+const ownerPassword = 'admin123'; // Change this to a secure password
+
+document.getElementById('submit-password').addEventListener('click', function() {
+    const inputPassword = document.getElementById('owner-password').value;
+    if (inputPassword === ownerPassword) {
+        // Show delete buttons when the correct password is entered
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.style.display = 'inline-block';
+        });
+    } else {
+        alert('Incorrect password');
+    }
+});
+
+// Load reviews from localStorage and display them
+document.addEventListener('DOMContentLoaded', function () {
+    const reviewsContainer = document.getElementById('reviews-container');
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    // Function to delete review
+    function deleteReview(index) {
+        reviews.splice(index, 1); // Remove the review at the specified index
+        localStorage.setItem('reviews', JSON.stringify(reviews)); // Update localStorage
+        window.location.reload(); // Reload the page to reflect changes
+    }
+
+    reviews.forEach((review, index) => {
+        const card = document.createElement('div');
+        card.classList.add('review-card');
+        card.innerHTML = `
+            <img src="${review.profileUrl}" alt="${review.username}">
+            <h4>${review.username}</h4>
+            <div class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+            <p>${review.opinion}</p>
+            <button class="delete-btn" onclick="deleteReview(${index})">Delete</button>
+        `;
+        reviewsContainer.appendChild(card);
+    });
+});
+
+// Attach delete function to window so it's accessible in the event listeners
+window.deleteReview = function(index) {
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews.splice(index, 1); // Remove review
+    localStorage.setItem('reviews', JSON.stringify(reviews)); // Update storage
+    window.location.reload(); // Refresh the page to show changes
+};
+</script>
+
+</body>
+</html>

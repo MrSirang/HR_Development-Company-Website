@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="responsive.css">
+    <title>HR Development</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #61dafb;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            height: 50px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 4px 8px;
+            border-radius: 25px;
+        }
+
+        .search-bar input[type="text"] {
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 5px 10px;
+            font-size: 14px;
+            width: 150px;
+            color: #fff;
+        }
+
+        .search-bar input[type="text"]::placeholder {
+            color: #bbb;
+        }
+
+        .search-icon {
+            background-color: #61dafb;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .search-icon:hover {
+            background-color: #20232a;
+            color: #61dafb;
+            transform: scale(1.05);
+        }
+
+        .language-selector {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector select {
+            background-color: transparent;
+            border: 2px solid #61dafb;
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            appearance: none;
+            cursor: pointer;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .language-selector select:hover {
+            border-color: #fff;
+            color: #61dafb;
+        }
+
+        .language-selector::after {
+            content: '▼';
+            position: absolute;
+            right: 15px;
+            font-size: 10px;
+            color: #61dafb;
+            pointer-events: none;
+        }
+
+        .language-selector select:hover::after {
+            color: #fff;
+        }
+
+        .background {
+            position: relative;
+            height: 500px;
+            width: 100%;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .short_b {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(46, 164, 255, 0.62);
+            color: white;
+            font-size: 30px;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 15px;
+            z-index: 1;
+            height: auto;
+            min-height: 35px;
+            max-height: 100px;
+            box-sizing: border-box;
+        }
+        
+        /* Hamburger Menu Styling */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Mobile menu (initially hidden) */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #333;
+            width: 100%;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .mobile-nav a {
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #444;
+            color: #61dafb;
+        }
+
+        .mobile-nav a.active {
+            color: #61dafb;
+            background-color: #444;
+        }
+        
+        @media (max-width: 485px) {
+            /* For mobile phones */
+            .logo {
+                margin-right: auto;
+            }
+
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .nav-container {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+        }
+
+        .about-section {
+            padding: 50px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .about-section h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            transition: color 0.3s ease, transform 0.4s ease;
+        }
+
+        .about-section h1:hover {
+            color: #00b3ff;
+            transform: scale(1.1);
+        }
+
+        .about-section p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            transition: color 0.3s ease, letter-spacing 0.4s ease;
+        }
+
+        .about-section p:hover {
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            margin: 20px;
+            min-width: 150px;
+        }
+
+        footer .footer-section h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: white;
+        }
+
+        footer .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        footer .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons a:hover {
+            color: #00b3ff;
+        }
+
+        footer .download-app {
+            margin-top: 20px;
+        }
+
+        footer .download-app img {
+            width: 120px;
+            margin-right: 10px;
+        }
+
+        .terms-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            color: #aaa;
+            align-items: center;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+        }
+
+        .terms-left {
+            text-align: left;
+        }
+
+        .terms-right {
+            text-align: right;
+        }
+
+        .terms-left a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .terms-left a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .terms-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .terms-left, .terms-right {
+                text-align: center;
+            }
+        }
+
+        .cta-btn {
+            background-color: #00b3ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+        .front {
+            /* Light grey background */
+            padding: 40px;
+            text-align: center;    
+            max-width: 800px;
+            margin: 50px auto; /* Center the section */
+        }
+
+        .front p {
+            font-size: 20px;
+            color:#005f99;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-family: Arial, sans-serif; 
+            font-size: 28px;
+        
+        }
+
+        .front video {
+            width: 100%;
+            height: auto;
+            max-width: 600px; /* Limit video size */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .front {
+                padding: 20px;
+            }
+
+            .front p {
+                font-size: 18px;
+            }
+
+            .front video {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.about-p {
+    max-width: 1150px;
+    margin: 60px 30px; 
+    padding: 20px;
+    text-align: left;
+}
+
+.about-p h3 {
+    font-size: 50px; 
+    color: black;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.about-p p {
+    font-size: 16px;
+    line-height: 1.6; 
+    color: #222;
+   
+}
+
+.hint {
+    font-size: 25px;
+    color: light black;
+} 
+
+* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+          
+        }
+
+        .card {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 40px solid #eee;
+        }
+
+        .card:nth-child(4)::after {
+            border: none;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Colors for each card */
+        .card:nth-child(1) {
+            border-top: 5px solid teal;
+        }
+
+        .card:nth-child(2) {
+            border-top: 5px solid orange;
+        }
+
+        .card:nth-child(3) {
+            border-top: 5px solid red;
+        }
+
+        .card:nth-child(4) {
+            border-top: 5px solid blue;
+        }
+
+        html, body {
+    height: 100%; /* Make sure the body takes up the full height */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background {
+    position: relative;
+    height: 100vh; /* Set the height to the full viewport height */
+    width: 100%; /* Full width */
+    overflow: hidden; /* Prevent overflow from content */
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the full background without distortion */
+}
+
+.short_b {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    background: rgba(46, 164, 255, 0.62);
+    color: white;
+    font-size: 30px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 15px;
+    z-index: 1;
+    height: auto; /* Adjust height based on content */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+                padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 40px 0;
+}
+
+.text-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.text-section h1 {
+    font-size: clamp(24px, 4vw, 36px);
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.text-section p {
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.image-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .content-section {
+        gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+    .container {
+                padding: 10px;
+            }
+
+    .content-section {
+                flex-direction: column;
+        gap: 15px;
+    }
+
+    .text-section,
+    .image-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 485px) {
+    .container {
+        padding: 10px;
+    }
+
+    .text-section h1 {
+        font-size: clamp(20px, 3vw, 24px);
+    }
+
+    .text-section p {
+        font-size: clamp(12px, 1.8vw, 14px);
+    }
+}
+
+         /* Hamburger Menu Styling */
+         .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Mobile menu (initially hidden) */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #333;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .mobile-nav a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #444;
+        }
+
+        @media (max-width: 485px) {
+            /* For mobile phones */
+            .logo{
+                margin-right: auto;
+            }
+            .logo h1 {
+                font-size: 18px;
+            }
+            .search-bar{
+                display: none;
+            }
+            .language-selector{
+                display: none;
+            }
+            .short_b {
+                font-size: 24px;
+            }
+            .hamburger{
+                margin-left: auto;
+                margin-top: -250px;
+            }
+
+            .port h1 {
+                font-size: 22px;
+            }
+
+            .neumorphism-card {
+                width: 260px;
+            }
+
+            .nav-container {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+                
+            }
+       
+
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="uy.jpeg" alt="Logo" />
+        <h1><!-- Logo text will be updated --></h1>
+      </div>
+  
+      <div class="nav-container">
+        <ul class="nav-links">
+          <li id="navHome"><a href="home.html">Home</a></li>
+          <li id="navAbout"><a href="about.html">About</a></li>
+          <li id="navContact"><a href="contact.html">Contact</a></li>
+          <li id="navGoals"><a href="goals.html">Goals</a></li>
+        </ul>
+      </div>
+
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a id="mNavHome" href="home.html">Home</a>
+        <a id="mNavAbout" href="about.html">About</a>
+        <a id="mNavContact" href="contact.html">Contact</a>
+        <a id="mNavGoals" href="goals.html">Goals</a>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for Courses">
+        <button class="search-icon" onclick="performSearch()">🔍</button>
+      </div>
+      <div class="language-selector">
+        <select id="languageSelector">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="zh">Chinese</option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="background">
+      <img src="ai.jpg" alt="Image description">
+      <div class="short_b" id="short_b">
+        About Us, Our Work, and Our Global Networks
+      </div>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="front">
+      <p id="frontText">
+        Through our efforts, people all across the world are able to realize their goals of financial independence.
+      </p>
+      <video width="320" height="240" controls>
+        <source src="imp.mp4" type="video/mp4">
+        <source src="imp.mp4" type="video/ogg">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  
+    <div class="about-p">
+      <h5 class="hint" id="aboutHint">About HR_Development</h5><br>
+      <p id="aboutText">
+        HR Development is a dynamic and innovative company that excels in delivering a comprehensive array of professional services. Our diverse offerings span across graphic design, web development, data entry, copywriting, content writing, and beyond. We are committed to providing high-quality, tailored solutions that cater to the unique needs of each client. Our approach emphasizes creativity and efficiency, ensuring that every project we undertake not only meets but exceeds expectations. By fostering an environment of innovation and excellence, we aim to drive success for our clients and help them achieve their strategic goals.
+      </p>
+    </div>
+  
+    <div class="about-p">
+      <h5 class="hint" id="missionHint">Our Mission and Vision</h5><br>
+      <p id="missionText">
+        At HR Development, our mission is to empower businesses by providing top-notch professional services tailored to their unique needs. We strive to be a catalyst for growth and innovation, leveraging our expertise in graphic design, web development, and content creation to deliver exceptional results. Our vision is to set new standards in the industry by fostering a culture of creativity, efficiency, and excellence. We are dedicated to building lasting partnerships with our clients, ensuring that our solutions not only meet but exceed their expectations. By continuously evolving and adapting to the dynamic market, we aim to drive success and help our clients achieve their strategic goals.
+      </p>
+    </div>
+  
+    <div class="container">
+      <!-- Mission Card -->
+      <div class="card">
+        <div class="icon">🏔️</div>
+        <div class="title" id="cardMissionTitle">Mission</div>
+        <div class="description" id="cardMissionDesc">
+          Our mission is to empower everyone with the skills to succeed in the future.
+        </div>
+      </div>
+      <!-- Vision Card -->
+      <div class="card">
+        <div class="icon">👁️</div>
+        <div class="title" id="cardVisionTitle">Vision</div>
+        <div class="description" id="cardVisionDesc">
+          Our vision is to be the top provider of personalized skill development.
+        </div>
+      </div>
+      <!-- Value Card -->
+      <div class="card">
+        <div class="icon">💼</div>
+        <div class="title" id="cardValueTitle">Value</div>
+        <div class="description" id="cardValueDesc">
+          We value commitment, growth, and the drive to create impact.
+        </div>
+      </div>
+      <!-- Goals Card -->
+      <div class="card">
+        <div class="icon">🎯</div>
+        <div class="title" id="cardGoalsTitle">Goals</div>
+        <div class="description" id="cardGoalsDesc">
+          Our goal is to build a community focused on continuous learning.
+        </div>
+      </div>
+    </div>
+  
+    <div class="about-p">
+      <h5 class="hint" id="coursesHint">About Our Courses</h5><br>
+      <p id="coursesText">
+        At HR Development, we offer a variety of professional courses designed to empower individuals with essential skills. Our course offerings include graphic design, web development, data entry, copywriting, and content writing, among others. We provide both online and offline learning experiences, ensuring flexibility and accessibility for all learners. Our commitment to high-quality, tailored instruction emphasizes creativity and efficiency, equipping our students to excel in their chosen fields and achieve their professional goals.
+      </p>
+    </div>
+  
+    <!-- Footer -->
+    <footer>
+      <div class="footer-section">
+        <h3 id="footerTitle">HR Development</h3>
+        <ul>
+          <li><a id="footerHome" href="home.html">Home</a></li>
+          <li><a id="footerAbout" href="about.html">About</a></li>
+          <li><a id="footerContact" href="contact.html">Contact</a></li>
+          <li><a id="footerGoals" href="goals.html">Goals</a></li>
+          <li><a id="footerTeam" href="OurTeam.html">Our Team</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3 id="footerCommunity">Community</h3>
+        <ul>
+          <li><a id="footerNews" href="news.html">News</a></li>
+          <li><a id="footerRate" href="rating.html">Rate Us</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3 id="footerProvide">We Provide</h3>
+        <ul>
+          <li><a id="footerGD" href="FooterGD.html">Graphic Designer</a></li>
+          <li><a id="footerWD" href="FooterWD.html">Web Developer</a></li>
+          <li><a id="footerPE" href="FooterPP.html">PowerPoint Expert</a></li>
+          <li><a id="footerDEE" href="FooterDE.html">Data Entry Expert</a></li>
+          <li><a id="footerAW" href="FooterAW.html">Assignment Work</a></li>
+          <li><a id="footerWE" href="FooterWE.html">MS Word | MS Excel</a></li>
+          <li><a id="footerFSD" href="FootFSD.html">Full Stack Developer</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3 id="footerContactTitle">Contact Us On</h3>
+        <div class="download-app">
+          <p id="footerEmail">hiringforbenifits24@gmail.com</p>
+          <p id="footerPhone">+923456515537</p>
+        </div>
+      </div>
+  
+      <div class="footer-section">
+        <h3 id="footerFollow">Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/groups/875306051134134/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+          </a>
+          <a href="https://www.instagram.com/hr_development24" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+          </a>
+          <a href="https://www.youtube.com/@hamzasirang" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+          </a>
+          <a href="https://chat.whatsapp.com/KgcL6pl51gx0D6ZVnjwkmk" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+          </a>
+        </div>
+      </div>
+  
+      <div class="terms-container">
+        <div class="terms-left">
+          <p>
+            <a href="#">Terms of use</a> | 
+            <a href="#">Privacy</a> | 
+            <a href="#">Use of cookies</a>
+          </p>
+          <p id="footerCopyright">© 2024 HR_Development Company</p>
+        </div>
+      </div>
+    </footer>
+  
+    <!-- JavaScript to Handle Language Switching -->
+    <script>
+      const translations = {
+        en: {
+          logoTitle: "Development",
+          navHome: "Home",
+          navAbout: "About",
+          navContact: "Contact",
+          navGoals: "Goals",
+          searchPlaceholder: "Search for Courses",
+          short_b: "About Us, Our Work, and Our Global Networks",
+          frontText: "Through our efforts, people all across the world are able to realize their goals of financial independence.",
+          aboutHint: "About HR_Development",
+          aboutText: "HR Development is a dynamic and innovative company that excels in delivering a comprehensive array of professional services. Our diverse offerings span across graphic design, web development, data entry, copywriting, content writing, and beyond. We are committed to providing high-quality, tailored solutions that cater to the unique needs of each client. Our approach emphasizes creativity and efficiency, ensuring that every project we undertake not only meets but exceeds expectations. By fostering an environment of innovation and excellence, we aim to drive success for our clients and help them achieve their strategic goals.",
+          missionHint: "Our Mission and Vision",
+          missionText: "At HR Development, our mission is to empower businesses by providing top-notch professional services tailored to their unique needs. We strive to be a catalyst for growth and innovation, leveraging our expertise in graphic design, web development, and content creation to deliver exceptional results. Our vision is to set new standards in the industry by fostering a culture of creativity, efficiency, and excellence. We are dedicated to building lasting partnerships with our clients, ensuring that our solutions not only meet but exceed their expectations. By continuously evolving and adapting to the dynamic market, we aim to drive success and help our clients achieve their strategic goals.",
+          cardMissionTitle: "Mission",
+          cardMissionDesc: "Our mission is to empower everyone with the skills to succeed in the future.",
+          cardVisionTitle: "Vision",
+          cardVisionDesc: "Our vision is to be the top provider of personalized skill development.",
+          cardValueTitle: "Value",
+          cardValueDesc: "We value commitment, growth, and the drive to create impact.",
+          cardGoalsTitle: "Goals",
+          cardGoalsDesc: "Our goal is to build a community focused on continuous learning.",
+          coursesHint: "About Our Courses",
+          coursesText: "At HR Development, we offer a variety of professional courses designed to empower individuals with essential skills. Our course offerings include graphic design, web development, data entry, copywriting, and content writing, among others. We provide both online and offline learning experiences, ensuring flexibility and accessibility for all learners. Our commitment to high-quality, tailored instruction emphasizes creativity and efficiency, equipping our students to excel in their chosen fields and achieve their professional goals.",
+          footerTitle: "HR Development",
+          footerHome: "Home",
+          footerAbout: "About",
+          footerContact: "Contact",
+          footerGoals: "Goals",
+          footerTeam: "Our Team",
+          footerCommunity: "Community",
+          footerNews: "News",
+          footerRate: "Rate Us",
+          footerProvide: "We Provide",
+          footerGD: "Graphic Designer",
+          footerWD: "Web Developer",
+          footerPE: "PowerPoint Expert",
+          footerDEE: "Data Entry Expert",
+          footerAW: "Assignment Work",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "Full Stack Developer",
+          footerContactTitle: "Contact Us On",
+          footerEmail: "hiringforbenifits24@gmail.com",
+          footerPhone: "+923456515537",
+          footerFollow: "Follow Us",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        es: {
+          logoTitle: "Desarrollo",
+          navHome: "Inicio",
+          navAbout: "Acerca de",
+          navContact: "Contacto",
+          navGoals: "Metas",
+          searchPlaceholder: "Buscar Cursos",
+          short_b: "Sobre Nosotros, Nuestro Trabajo y Nuestras Redes Globales",
+          frontText: "A través de nuestros esfuerzos, personas de todo el mundo pueden alcanzar sus objetivos de independencia financiera.",
+          aboutHint: "Acerca de HR_Development",
+          aboutText: "HR Development es una empresa dinámica e innovadora que se destaca en la prestación de una amplia gama de servicios profesionales. Nuestra diversa oferta abarca diseño gráfico, desarrollo web, entrada de datos, redacción publicitaria, redacción de contenido y más. Estamos comprometidos a ofrecer soluciones de alta calidad y a medida que satisfagan las necesidades únicas de cada cliente. Nuestro enfoque enfatiza la creatividad y la eficiencia, asegurando que cada proyecto que emprendemos no solo cumpla, sino supere las expectativas. Al fomentar un entorno de innovación y excelencia, buscamos impulsar el éxito de nuestros clientes y ayudarlos a alcanzar sus objetivos estratégicos.",
+          missionHint: "Nuestra Misión y Visión",
+          missionText: "En HR Development, nuestra misión es empoderar a las empresas proporcionando servicios profesionales de primer nivel adaptados a sus necesidades únicas. Nos esforzamos por ser un catalizador para el crecimiento y la innovación, aprovechando nuestra experiencia en diseño gráfico, desarrollo web y creación de contenido para ofrecer resultados excepcionales. Nuestra visión es establecer nuevos estándares en la industria fomentando una cultura de creatividad, eficiencia y excelencia. Estamos dedicados a construir asociaciones duraderas con nuestros clientes, asegurando que nuestras soluciones no solo cumplan, sino superen sus expectativas. Al evolucionar y adaptarnos continuamente al mercado dinámico, aspiramos a impulsar el éxito y ayudar a nuestros clientes a alcanzar sus objetivos estratégicos.",
+          cardMissionTitle: "Misión",
+          cardMissionDesc: "Nuestra misión es empoderar a todos con las habilidades necesarias para tener éxito en el futuro.",
+          cardVisionTitle: "Visión",
+          cardVisionDesc: "Nuestra visión es ser el principal proveedor de desarrollo de habilidades personalizadas.",
+          cardValueTitle: "Valor",
+          cardValueDesc: "Valoramos el compromiso, el crecimiento y la determinación para crear impacto.",
+          cardGoalsTitle: "Metas",
+          cardGoalsDesc: "Nuestro objetivo es construir una comunidad enfocada en el aprendizaje continuo.",
+          coursesHint: "Acerca de Nuestros Cursos",
+          coursesText: "En HR Development, ofrecemos una variedad de cursos profesionales diseñados para empoderar a las personas con habilidades esenciales. Nuestra oferta de cursos incluye diseño gráfico, desarrollo web, entrada de datos, redacción publicitaria y redacción de contenido, entre otros. Proporcionamos experiencias de aprendizaje tanto en línea como presenciales, garantizando flexibilidad y accesibilidad para todos los estudiantes. Nuestro compromiso con una instrucción de alta calidad y personalizada enfatiza la creatividad y la eficiencia, equipando a nuestros estudiantes para sobresalir en sus campos elegidos y alcanzar sus metas profesionales.",
+          footerTitle: "HR Desarrollo",
+          footerHome: "Inicio",
+          footerAbout: "Acerca de",
+          footerContact: "Contacto",
+          footerGoals: "Metas",
+          footerTeam: "Nuestro Equipo",
+          footerCommunity: "Comunidad",
+          footerNews: "Noticias",
+          footerRate: "Califícanos",
+          footerProvide: "Lo que ofrecemos",
+          footerGD: "Diseñador Gráfico",
+          footerWD: "Desarrollador Web",
+          footerPE: "Experto PowerPoint",
+          footerDEE: "Experto en Entrada de Datos",
+          footerAW: "Trabajo de Asignación",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "Desarrollador Full Stack",
+          footerContactTitle: "Contáctanos en",
+          footerEmail: "hiringforbenifits24@gmail.com",
+          footerPhone: "+923456515537",
+          footerFollow: "Síguenos",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        zh: {
+          logoTitle: "发展",
+          navHome: "首页",
+          navAbout: "关于",
+          navContact: "联系",
+          navGoals: "目标",
+          searchPlaceholder: "搜索课程",
+          short_b: "关于我们，我们的工作和我们的全球网络",
+          frontText: "通过我们的努力，全世界的人们能够实现他们的财务独立目标。",
+          aboutHint: "关于 HR_Development",
+          aboutText: "HR Development 是一家充满活力和创新的公司，在提供全面的专业服务方面表现卓越。我们的服务范围涵盖平面设计、网页开发、数据录入、文案撰写、内容创作等多个领域。我们致力于提供高质量、量身定制的解决方案，以满足每位客户独特的需求。我们的做法强调创造力和效率，确保我们承接的每个项目不仅符合而且超越预期。通过营造一个充满创新和卓越的环境，我们旨在推动客户的成功，帮助他们实现战略目标。",
+          missionHint: "我们的使命和愿景",
+          missionText: "在 HR Development，我们的使命是通过提供顶级的专业服务来赋能企业，满足其独特需求。我们努力成为增长和创新的催化剂，利用我们在平面设计、网页开发和内容创作方面的专业知识，提供卓越的成果。我们的愿景是通过培养创造力、高效性和卓越的文化，在行业中树立新的标准。我们致力于与客户建立持久的合作伙伴关系，确保我们的解决方案不仅满足而且超越他们的期望。通过不断发展和适应不断变化的市场，我们旨在推动成功并帮助客户实现他们的战略目标。",
+          cardMissionTitle: "使命",
+          cardMissionDesc: "我们的使命是赋能每个人，使其具备未来成功所需的技能。",
+          cardVisionTitle: "愿景",
+          cardVisionDesc: "我们的愿景是成为个性化技能发展的顶级供应商。",
+          cardValueTitle: "价值观",
+          cardValueDesc: "我们重视承诺、成长和创造影响力的动力。",
+          cardGoalsTitle: "目标",
+          cardGoalsDesc: "我们的目标是构建一个以持续学习为中心的社区。",
+          coursesHint: "关于我们的课程",
+          coursesText: "在 HR Development，我们提供各种专业课程，旨在赋予个人必备技能。我们的课程包括平面设计、网页开发、数据录入、文案撰写和内容创作等。我们提供线上和线下的学习体验，确保所有学习者的灵活性和可及性。我们致力于高质量、量身定制的教学，强调创造力和效率，使我们的学生能够在所选领域中脱颖而出，实现职业目标。",
+          footerTitle: "HR 发展",
+          footerHome: "首页",
+          footerAbout: "关于我们",
+          footerContact: "联系我们",
+          footerGoals: "目标",
+          footerTeam: "我们的团队",
+          footerCommunity: "社区",
+          footerNews: "新闻",
+          footerRate: "评价我们",
+          footerProvide: "我们提供",
+          footerGD: "平面设计师",
+          footerWD: "网页开发",
+          footerPE: "PPT 专家",
+          footerDEE: "数据录入专家",
+          footerAW: "作业工作",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "全栈开发者",
+          footerContactTitle: "联系我们",
+          footerEmail: "hiringforbenifits24@gmail.com",
+          footerPhone: "+923456515537",
+          footerFollow: "关注我们",
+          footerCopyright: "© 2024 HR_Development Company"
+        },
+        fr: {
+          logoTitle: "Développement",
+          navHome: "Accueil",
+          navAbout: "À propos",
+          navContact: "Contact",
+          navGoals: "Objectifs",
+          searchPlaceholder: "Rechercher des cours",
+          short_b: "À propos de nous, notre travail et nos réseaux mondiaux",
+          frontText: "Grâce à nos efforts, les gens du monde entier peuvent réaliser leurs objectifs d'indépendance financière.",
+          aboutHint: "À propos de HR_Development",
+          aboutText: "HR Development est une entreprise dynamique et innovante qui excelle dans la prestation d'une gamme complète de services professionnels. Nos offres variées couvrent le design graphique, le développement web, la saisie de données, la rédaction publicitaire, la rédaction de contenu, et bien plus encore. Nous nous engageons à fournir des solutions de haute qualité et personnalisées qui répondent aux besoins uniques de chaque client. Notre approche met l'accent sur la créativité et l'efficacité, garantissant que chaque projet que nous entreprenons dépasse les attentes. En favorisant un environnement d'innovation et d'excellence, nous visons à propulser le succès de nos clients et à les aider à atteindre leurs objectifs stratégiques.",
+          missionHint: "Notre Mission et Vision",
+          missionText: "Chez HR Development, notre mission est de donner aux entreprises les moyens de réussir en fournissant des services professionnels de premier ordre adaptés à leurs besoins uniques. Nous nous efforçons d'être un catalyseur de croissance et d'innovation, en tirant parti de notre expertise en design graphique, en développement web et en création de contenu pour obtenir des résultats exceptionnels. Notre vision est d'établir de nouvelles normes dans l'industrie en favorisant une culture de créativité, d'efficacité et d'excellence. Nous nous engageons à bâtir des partenariats durables avec nos clients, en veillant à ce que nos solutions dépassent leurs attentes. En évoluant continuellement et en nous adaptant au marché dynamique, nous visons à stimuler le succès et à aider nos clients à atteindre leurs objectifs stratégiques.",
+          cardMissionTitle: "Mission",
+          cardMissionDesc: "Notre mission est de donner à chacun les compétences nécessaires pour réussir dans l'avenir.",
+          cardVisionTitle: "Vision",
+          cardVisionDesc: "Notre vision est d'être le principal fournisseur de développement de compétences personnalisées.",
+          cardValueTitle: "Valeur",
+          cardValueDesc: "Nous valorisons l'engagement, la croissance et la volonté de créer un impact.",
+          cardGoalsTitle: "Objectifs",
+          cardGoalsDesc: "Notre objectif est de bâtir une communauté axée sur l'apprentissage continu.",
+          coursesHint: "À propos de nos cours",
+          coursesText: "Chez HR Development, nous proposons une variété de cours professionnels conçus pour donner aux individus les compétences essentielles. Nos offres de cours incluent le design graphique, le développement web, la saisie de données, la rédaction publicitaire et la rédaction de contenu, entre autres. Nous proposons des expériences d'apprentissage en ligne et hors ligne, assurant flexibilité et accessibilité pour tous les apprenants. Notre engagement envers une instruction de haute qualité et sur mesure met l'accent sur la créativité et l'efficacité, permettant à nos étudiants d'exceller dans leur domaine et d'atteindre leurs objectifs professionnels.",
+          footerTitle: "HR Développement",
+          footerHome: "Accueil",
+          footerAbout: "À propos",
+          footerContact: "Contact",
+          footerGoals: "Objectifs",
+          footerTeam: "Notre Équipe",
+          footerCommunity: "Communauté",
+          footerNews: "Actualités",
+          footerRate: "Évaluez-nous",
+          footerProvide: "Nos services",
+          footerGD: "Graphiste",
+          footerWD: "Développeur Web",
+          footerPE: "Expert PowerPoint",
+          footerDEE: "Expert en saisie de données",
+          footerAW: "Travaux d'assignation",
+          footerWE: "MS Word | MS Excel",
+          footerFSD: "Développeur Full Stack",
+          footerContactTitle: "Contactez-nous",
+          footerEmail: "hiringforbenifits24@gmail.com",
+          footerPhone: "+923456515537",
+          footerFollow: "Suivez-nous",
+          footerCopyright: "© 2024 HR_Development Company"
+        }
+      };
+  
+      function changeLanguage(lang) {
+        // Update Navbar & Logo
+        document.getElementById("logoTitle").textContent = translations[lang].logoTitle;
+        document.getElementById("navHome").textContent = translations[lang].navHome;
+        document.getElementById("navAbout").textContent = translations[lang].navAbout;
+        document.getElementById("navContact").textContent = translations[lang].navContact;
+        document.getElementById("navGoals").textContent = translations[lang].navGoals;
+        // Update Mobile Navigation
+        document.getElementById("mNavHome").textContent = translations[lang].navHome;
+        document.getElementById("mNavAbout").textContent = translations[lang].navAbout;
+        document.getElementById("mNavContact").textContent = translations[lang].navContact;
+        document.getElementById("mNavGoals").textContent = translations[lang].navGoals;
+        // Update Search Placeholder
+        document.getElementById("searchInput").setAttribute("placeholder", translations[lang].searchPlaceholder);
+        // Update Background Text
+        document.getElementById("short_b").textContent = translations[lang].short_b;
+        // Update Main Content
+        document.getElementById("frontText").textContent = translations[lang].frontText;
+        document.getElementById("aboutHint").textContent = translations[lang].aboutHint;
+        document.getElementById("aboutText").textContent = translations[lang].aboutText;
+        document.getElementById("missionHint").textContent = translations[lang].missionHint;
+        document.getElementById("missionText").textContent = translations[lang].missionText;
+        // Update Cards
+        document.getElementById("cardMissionTitle").textContent = translations[lang].cardMissionTitle;
+        document.getElementById("cardMissionDesc").textContent = translations[lang].cardMissionDesc;
+        document.getElementById("cardVisionTitle").textContent = translations[lang].cardVisionTitle;
+        document.getElementById("cardVisionDesc").textContent = translations[lang].cardVisionDesc;
+        document.getElementById("cardValueTitle").textContent = translations[lang].cardValueTitle;
+        document.getElementById("cardValueDesc").textContent = translations[lang].cardValueDesc;
+        document.getElementById("cardGoalsTitle").textContent = translations[lang].cardGoalsTitle;
+        document.getElementById("cardGoalsDesc").textContent = translations[lang].cardGoalsDesc;
+        // Update Courses Section
+        document.getElementById("coursesHint").textContent = translations[lang].coursesHint;
+        document.getElementById("coursesText").textContent = translations[lang].coursesText;
+        // Update Footer
+        document.getElementById("footerTitle").textContent = translations[lang].footerTitle;
+        document.getElementById("footerHome").textContent = translations[lang].footerHome;
+        document.getElementById("footerAbout").textContent = translations[lang].footerAbout;
+        document.getElementById("footerContact").textContent = translations[lang].footerContact;
+        document.getElementById("footerGoals").textContent = translations[lang].footerGoals;
+        document.getElementById("footerTeam").textContent = translations[lang].footerTeam;
+        document.getElementById("footerCommunity").textContent = translations[lang].footerCommunity;
+        document.getElementById("footerNews").textContent = translations[lang].footerNews;
+        document.getElementById("footerRate").textContent = translations[lang].footerRate;
+        document.getElementById("footerProvide").textContent = translations[lang].footerProvide;
+        document.getElementById("footerGD").textContent = translations[lang].footerGD;
+        document.getElementById("footerWD").textContent = translations[lang].footerWD;
+        document.getElementById("footerPE").textContent = translations[lang].footerPE;
+        document.getElementById("footerDEE").textContent = translations[lang].footerDEE;
+        document.getElementById("footerAW").textContent = translations[lang].footerAW;
+        document.getElementById("footerWE").textContent = translations[lang].footerWE;
+        document.getElementById("footerFSD").textContent = translations[lang].footerFSD;
+        document.getElementById("footerContactTitle").textContent = translations[lang].footerContactTitle;
+        document.getElementById("footerEmail").textContent = translations[lang].footerEmail;
+        document.getElementById("footerPhone").textContent = translations[lang].footerPhone;
+        document.getElementById("footerFollow").textContent = translations[lang].footerFollow;
+        document.getElementById("footerCopyright").textContent = translations[lang].footerCopyright;
+      }
+  
+      // Listen for language selection changes
+      document.getElementById("languageSelector").addEventListener("change", function () {
+        changeLanguage(this.value);
+      });
+  
+      // Set default language to English on page load
+      changeLanguage("en");
+    </script>
+  </body>
+</html>

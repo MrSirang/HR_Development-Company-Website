@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Development</title>
+    <style>
+          body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .navbar {
+        background-color: #333;
+        color: #61dafb;
+        padding: 5px 20px; /* Further reduced padding for smaller height */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        height: 50px; /* Smaller navbar height */
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .logo h1 {
+        margin: 0;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-right: 20px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: #333;
+        padding: 4px 8px;
+        border-radius: 25px;
+    }
+
+    .search-bar input[type="text"] {
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 150px;
+        color: #fff;
+    }
+
+    .search-bar input[type="text"]::placeholder {
+        color: #bbb;
+    }
+
+    .search-icon {
+        background-color: #61dafb;
+        border: none;
+        padding: 5px 10px; /* Adjusted padding for better size */
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #fff; /* Changed color to white */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-icon:hover {
+        background-color: #20232a;
+        color: #61dafb;
+        transform: scale(1.05);
+    }
+
+    .language-selector {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector select {
+        background-color: transparent;
+        border: 2px solid #61dafb;
+        color: #fff;
+        padding: 5px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        appearance: none;
+        cursor: pointer;
+        transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .language-selector select:hover {
+        border-color: #fff;
+        color: #61dafb;
+    }
+
+    .language-selector::after {
+        content: '▼';
+        position: absolute;
+        right: 15px;
+        font-size: 10px;
+        color: #61dafb;
+        pointer-events: none;
+    }
+
+    .language-selector select:hover::after {
+        color: #fff;
+    }
+
+        .background {
+            position: relative;
+            height: 500px;
+            width: 100%;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .short_b {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 98%;
+            background: rgba(46, 164, 255, 0.62);
+            color: white;
+            font-size: 30px;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 15px;
+            z-index: 1;
+            height: 55px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            margin: 20px;
+            min-width: 150px;
+        }
+
+        footer .footer-section h3 {
+            margin-bottom: 10px;
+            margin-left: 17px;
+            font-size: 16px;
+            color: white;
+        }
+
+        footer .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        footer .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons a:hover {
+            color: #00b3ff;
+        }
+
+        footer .download-app {
+            margin-top: 20px;
+        }
+
+        footer .download-app img {
+            width: 120px;
+            margin-right: 10px;
+        }
+
+        .terms-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            color: #aaa;
+            align-items: center;
+        }
+
+        .terms-left {
+            text-align: left;
+        }
+
+        .terms-right {
+            text-align: right;
+        }
+
+        .terms-left a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .terms-left a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+        
+        .port {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .port h1 {
+            font-size: 26px;
+            color: #00b3ff;
+            margin-bottom: 10px;
+        }
+
+        .port p {
+            margin-bottom: 20px;
+        }
+
+        .port a {
+            text-decoration: none;
+            color: white;
+            background-color: #00b3ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .port a:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+        .neumorphism-card button a{
+            text-decoration: none;
+            color: white;
+        }
+        body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+header {
+  background-color: #f7f7f7;
+  padding: 20px;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+section {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+strong {
+  font-weight: bold;
+  color: #00698f;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+li:before {
+  content: "\2022";
+  color:#333 ;
+  font-size: 18px;
+  margin-right: 10px;
+}
+body{
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .card{
+            width: 300px;
+            height: 350px;
+            margin: 0 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            display: inline-block; /* Ensures they stay in line */
+            vertical-align: top; /* Aligns cards to the top */
+        }
+        .card h2{
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .card p{
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .card button{
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .card button:hover{
+            background-color: #0056b3;
+        }
+        .card img{
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows wrapping if the screen size is too small */
+    margin-bottom: 50px; /* Add space before footer */
+}
+
+.card img {
+    width: 80px; /* Smaller image */
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 18px; /* Smaller heading */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px; /* Smaller text */
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px; /* Smaller button */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size for button */
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #0056b3;
+}
+   /* Responsive styling */
+   @media (max-width: 1200px) {
+            /* For tablets and smaller desktops */
+            .search-bar input[type="text"] {
+                width: 120px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .port {
+                max-width: 500px;
+            }
+
+            footer {
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* For tablets and smaller screens */
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .port {
+                max-width: 400px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                margin: 10px 0;
+            }
+
+            .terms-container {
+                flex-direction: column;
+            }
+
+            .terms-left, .terms-right {
+                text-align: center;
+            }
+
+            footer .download-app img {
+                width: 100px;
+            }
+        }
+         /* Hamburger Menu Styling */
+         .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Mobile menu (initially hidden) */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #333;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .mobile-nav a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #444;
+        }
+
+        @media (max-width: 485px) {
+            /* For mobile phones */
+            .logo{
+                margin-right: auto;
+            }
+            .logo h1 {
+                font-size: 18px;
+            }
+            .search-bar{
+                display: none;
+            }
+            .language-selector{
+                display: none;
+            }
+            .short_b {
+                font-size: 24px;
+                width: 93.5%;
+            }
+           
+            .hamburger{
+                margin-left: auto;
+                margin-top: -250px;
+            }
+            .card{
+                display: none;
+            }
+
+            .port h1 {
+                font-size: 22px;
+            }
+
+            .neumorphism-card {
+                width: 260px;
+            }
+
+            .nav-container {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+                
+            }
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="uy.jpeg" alt="Logo">
+            <h1>Development</h1>
+        </div>
+    
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="goals.html">Goals</a></li>
+            </ul>
+        </div>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="goals.html">Goals</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for Courses">
+            <button class="search-icon" onclick="performSearch()">🔍</button>
+        </div>
+    
+        <div class="language-selector">
+            <select>
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>Chinese</option>
+               
+            </select>
+        </div>
+    </div>
+
+    <div class="background">
+        <img src="full-stack-development.png" alt="Image description">
+        <div class="short_b">
+            Empowering businesses with innovative design solutions for growth and success
+        </div>
+    </div>
+	<header>
+		<h1>An Open The Door To Reach You In Your Destiny</h1>
+		<p>Grow your business digitally under the umbrella of Pakchamp and convert your business into a brand.</p>
+	</header>
+	<section>
+		<h2>About HR_Development</h2>
+		<p>HR_Development, a web development company in Pakistan has continuously strived to provide tailor-made, cutting-edge solutions for its valued clients for the last six years. "To meet every need," we try to fulfill our professional commitment by providing contemporary website development services in Pakistan.</p>
+	</section>
+	<section>
+		<h2>Our Expertise</h2>
+		<p>HR_Development's well-experienced web developers are here to deliver an excellent website development service across Pakistan (Lahore, Karachi, Islamabad) and anywhere else around the world.</p>
+		<ul>
+			<li><strong>Responsive Websites:</strong> Our web developers provide responsive websites that adapt to mobile, tablet, and desktop sizes to increase your website conversion rate.</li>
+			<li><strong>Web Integrations:</strong> Our web developers have profound expertise in popular web integrations, such as; responsive web designing, fast extensible websites, rich-featured CRMs, and e-commerce functionality.</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Content Management Systems</h2>
+		<p>We utilize multiple content management system platforms ranging from custom-designed CMS, WordPress development services, Drupal development services, Joomla development services, and e-commerce development services to produce engaging content that entices your desired customers.</p>
+	</section>
+	<section>
+		<h2>Web Hosting in Pakistan</h2>
+		<p>Moreover, in addition to being one of the leading hosting companies, Pakchamp offers the best web hosting in Pakistan within the context of multiple web hosting features, technical specifications, 99.99% uptime guarantee, reliability, free .com domain registration, 24/7 support, free SSL certificate, with 30 days money-back guarantee at a highly affordable price.</p>
+	</section>
+	<section>
+		<h2>E-commerce Web Development</h2>
+		<p>As one of the most renowned businesses and E-commerce web development companies in Pakistan, we know how to design E-commerce websites that allow you to sell your items.</p>
+	</section>
+	<section>
+		<h2>Our Services</h2>
+		<p>Pakchamp web development and designing services give wings to your digital business. We have an expert team who makes your business easy to get anywhere in the era of the E-commerce industry.</p>
+		<ul>
+			<li><strong>CMS Development:</strong> We provide CMS Development services for your online shopping store.</li>
+			<li><strong>E-commerce Website Development:</strong> We develop e-commerce websites that allow you to sell your items.</li>
+			<li><strong>WordPress Websites:</strong> We offer WordPress development services for your online business.</li>
+			<li><strong>Application Development:</strong> We provide application development services for your online shopping store.</li>
+		</ul>
+	</section>
+	<footer>
+		<p >Contact us to get our exceptional web development services at competitive prices.</p>
+	</footer>
+    <div class="container">
+        <div class="card">
+            <img src="images (4).jfif" alt="Web Development">
+            <h2>Our Expertise</h2>
+            <p>HR_Development well-experienced web developers are here to deliver an excellent website development service across Pakistan (Lahore, Karachi, Islamabad) and anywhere else around the world.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="card">
+            <img src="images (5).jfif" alt="Content Management">
+            <h2>Content Management Systems</h2>
+            <p>We utilize multiple content management system platforms ranging from WordPress development services, e-commerce development services to produce engaging content that entices your desired customers.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="card">
+            <img src="images (6).jfif" alt="Web Hosting">
+            <h2>Web Hosting in Pakistan</h2>
+            <p>Moreover, in addition to being one of the leading hosting companies, we offers the best web hosting in Pakistan within the context of multiple web hosting features, technical specifications, reliability, with 30 days money-back guarantee at a highly affordable price.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="card">
+            <img src="images (7).jfif" alt="E-commerce Development">
+            <h2>E-commerce Web Development</h2>
+            <p>As one of the most renowned businesses and E-commerce web development companies in Pakistan, we know how to design E-commerce websites that allow you to sell your items.</p>
+            <button>Learn More</button>
+        </div>
+    </div>
+   
+  <footer>
+        <div class="footer-section">
+            <h3>HR Development</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="OurTeam.html">Our Team</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Community</h3>
+            <ul>
+                <li><a href="news.html">News</a></li>
+                <li><a href="rating.html">Rate Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>We Provide</h3>
+            <ul>
+                <li><a href="FooterGD.html">Graphic Designer</a></li>
+                <li><a href="FooterWD.html">Web Developer </a></li>
+                <li><a href="FooterPP.html">PowerPoint Expert</a></li>
+                <li><a href="FooterDE.html">Data Entry Expert</a></li>
+                <li><a href="FooterAW.html">Assignment Work</a></li>
+                <li><a href="FooterWE.html">MS Word | MS Excel</a></li>
+                <li><a href="FootFSD.html">Full Stack Developer</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Us On</h3>
+            <div class="download-app">
+              <p>hiringforbenifits24@gmail.com</p>
+              <p>+923456515537</p>
+            </div>
+        </div>
+
+        <!-- Social Icons Section -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/groups/875306051134134/?rdid=rUczcvIl5Yc1zqpf&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2FNf3VXYDCrbwNpZ62%2F" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/hr_development24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@hamzasirang" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+                </a>
+                <a href="https://chat.whatsapp.com/KgcL6pl51gx0D6ZVnjwkmk" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                </a>
+            </div>
+        </div>
+
+           <!-- Terms and Conditions Section -->
+        
+ <div class="terms-container" >
+        
+    <div class="terms-left"> 
+      <p>_________________________________________________________________________________________________________________________________________________________________________</p>
+        <p><a href="#">Terms of use</a> | <a href="#">Privacy</a> | <a href="#">Use of cookies</a></p>
+        <p>© 2024 HR_Development Company</p>
+    </div>
+</div>
+    </footer>
+
+  <script>
+    function performSearch() {
+      // Get the input value and convert it to lowercase to handle case-insensitive search
+      var query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      // Check the search term and redirect to the corresponding page
+      if (query === "home") {
+        window.location.href = "home.html"; // Replace with your actual 'home' page URL
+      } else if (query === "about") {
+        window.location.href = "about.html"; // Replace with your actual 'about' page URL
+      } else if (query === "contact") {
+        window.location.href = "contact.html"; // Replace with your actual 'contact' page URL
+      } else if (query === "goals") {
+        window.location.href = "goals.html"; // Replace with your actual 'goals' page URL
+      } else {
+        // If no match, you can show an alert or take other actions
+        alert("Page not found. Please search for 'home', 'about', 'contact', or 'goals'.");
+      }
+    }
+    function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+  </script>
+</body>
+</html>

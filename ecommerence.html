@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Platforms</title>
+   <style>
+   
+   * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.container .card {
+  position: relative;
+  width: 280px;
+  height: 350px;
+  margin: 30px;
+}
+
+.container .card:nth-of-type(2) {
+  transform: rotate(5deg);
+}
+
+.container .card .image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  transform: translate(10px, 10px);
+}
+
+.container .card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 255px;
+  height: 325px;
+  border: 25px solid #fff;
+  z-index: 1;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 7px 7px 21px #bdbdbd, -7px -7px 21px #ffffff;
+  background: transparent;
+}
+
+.container .card:nth-of-type(1)::before {
+  filter: url(#wavy1);
+}
+
+.container .card:nth-of-type(2)::before {
+  filter: url(#wavy2);
+}
+
+.container .card:nth-of-type(3)::before {
+  filter: url(#wavy3);
+}
+
+.image1 {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnrLhN3ETTnR3UrJ-QqsLeYDggmQ5Fm9WnHQ&s");
+}
+
+.image2 {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaJ32Iit-f1T6zbIeGAAeJBj--Lx68Ay0f1A&s");
+}
+
+.image3 {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR2hGnwR2u9ELlWifZ2P0ximHflQRyNu-uzA&s");
+}
+
+svg {
+  width: 0;
+  height: 0;
+}
+
+.container .card .info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 50px 30px 30px 30px;
+  transform: translate(10px, 10px);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  line-height: 1.4;
+  font-size: 20px;
+  opacity: 0;
+  transition-duration: 1s;
+}
+
+.container .card:hover .info {
+  opacity: 1;
+}
+
+
+   </style>
+</head>
+<body>
+   
+    <div class="container">
+        <div class="card">
+          <div class="image image1"></div>
+          <div class="info">
+            <h2>About me</h2>
+            <p>In this day and age, consumers are using their mobile phones more and more to shop and interact with brands online. In just a few scrolls and clicks</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="image image2"></div>
+          <div class="info">
+            <h2>About me</h2>
+            <p>In this day and age, consumers are using their mobile phones more and more to shop and interact with brands online. In just a few scrolls and clicks</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="image image3"></div>
+          <div class="info">
+            <h2>About me</h2>
+            <p>In this day and age, consumers are using their mobile phones more and more to shop and interact with brands online. In just a few scrolls and clicks</p>
+          </div>
+        </div>
+      </div>
+      <svg>
+        <filter id="wavy1">
+          <feturbulence x="0" y="0" baseFrequency="0.2" numOctaves="5" seed="1"></feturbulence>
+          <feDisplacementMap in="SourceGraphic" scale="20" />
+        </filter>
+      </svg>
+      <svg>
+        <filter id="wavy2">
+          <feturbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1"></feturbulence>
+          <feDisplacementMap in="SourceGraphic" scale="20" />
+        </filter>
+      </svg>
+      <svg>
+        <filter id="wavy3">
+          <feturbulence x="0" y="0" baseFrequency="0.1" numOctaves="5" seed="1"></feturbulence>
+          <feDisplacementMap in="SourceGraphic" scale="20" />
+        </filter>
+      </svg>
+</body>
+</html>

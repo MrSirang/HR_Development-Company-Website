@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>HR_Development</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif, sans-serif;
+      background-color: #f2f2f2;
+    }
+   
+
+    form {
+      max-width: 400px;
+      margin: 40px auto; 
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 90%;
+      height: 30px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    select#gender {
+      height: 40px;
+      padding: 10px;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 20%;
+      font-size: 16px;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 3em; 
+      color: #333; 
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+      transition: color 0.3s ease; /* Add transition for smooth color change */
+      font-family: 'Courier New', Courier, monospace; /* Change font here */
+    }
+
+    h1:hover {
+      color: #4CAF50; /* Change color on hover */
+    }
+
+    .square-box {
+      border: 1px solid #ccc; 
+      padding: 20px;
+      margin: 20px auto; 
+      width: 400px;
+      background-color: #fff; 
+      border-radius: 5px; 
+    }
+
+    .square-box p {
+      text-align: center; 
+      font-size: 1.2em; 
+      line-height: 1.5; 
+      transition: color 0.3s ease; /* Add transition for smooth color change */
+    }
+
+    .square-box p:hover {
+      color: #4CAF50; /* Change color on hover */
+    }
+  </style>
+
+  
+</head>
+<body>
+  <img src="HR.jpeg" alt="">
+  <h1  style="text-align: center;"> HR_Development</h1>
+  <div class="square-box">
+    <p>We are Hiring! 
+      Graphic Designers , Front End / Back End developers , MS Excel, MS word , Web Designers, Data Entry/transcribing  </p>
+  </div>
+  <form id="ambassador-form">
+    <label for="full-name">Full Name:</label>
+    <input type="text" id="full-name" name="full-name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="contact-number">Contact Number (WhatsApp):</label>
+    <input type="tel" id="contact-number" name="contact-number" required pattern="+92 \d{3} \d{7}">
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="current-city">Current City:</label>
+    <input type="text" id="current-city" name="current-city" required>
+
+    <label for="university-name">University Name:</label>
+    <input type="text" id="university-name" name="university-name" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('ambassador-form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const jsonData = Object.fromEntries(formData.entries());
+
+      // Send data to server or save to local storage
+      console.log(jsonData);
+    });
+  </script>
+</body>
+</html>

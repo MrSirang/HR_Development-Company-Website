@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Development</title>
+    <style>
+          body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .navbar {
+        background-color: #333;
+        color: #61dafb;
+        padding: 5px 20px; /* Further reduced padding for smaller height */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        height: 50px; /* Smaller navbar height */
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .logo h1 {
+        margin: 0;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-right: 20px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: #333;
+        padding: 4px 8px;
+        border-radius: 25px;
+    }
+
+    .search-bar input[type="text"] {
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 5px 10px;
+        font-size: 14px;
+        width: 150px;
+        color: #fff;
+    }
+
+    .search-bar input[type="text"]::placeholder {
+        color: #bbb;
+    }
+
+    .search-icon {
+        background-color: #61dafb;
+        border: none;
+        padding: 5px 10px; /* Adjusted padding for better size */
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #fff; /* Changed color to white */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-icon:hover {
+        background-color: #20232a;
+        color: #61dafb;
+        transform: scale(1.05);
+    }
+
+    .language-selector {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector select {
+        background-color: transparent;
+        border: 2px solid #61dafb;
+        color: #fff;
+        padding: 5px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        appearance: none;
+        cursor: pointer;
+        transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .language-selector select:hover {
+        border-color: #fff;
+        color: #61dafb;
+    }
+
+    .language-selector::after {
+        content: '▼';
+        position: absolute;
+        right: 15px;
+        font-size: 10px;
+        color: #61dafb;
+        pointer-events: none;
+    }
+
+    .language-selector select:hover::after {
+        color: #fff;
+    }
+        .background {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .short_b {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-width: 100%;
+            background: rgba(46, 164, 255, 0.62);
+            color: white;
+            font-size: clamp(12px, 2vw, 24px);
+            text-align: center;
+            padding: 8px 15px;
+            z-index: 1;
+            height: auto;
+            min-height: 35px;
+            max-height: 100px;
+            box-sizing: border-box;
+            margin: 0;
+            overflow: hidden;
+            white-space: normal;
+            word-wrap: break-word;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-section {
+            flex: 1;
+            margin: 20px;
+            min-width: 150px;
+        }
+
+        footer .footer-section h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: white;
+        }
+
+        footer .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        footer .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-section ul li a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .social-icons a:hover {
+            color: #00b3ff;
+        }
+
+        footer .download-app {
+            margin-top: 20px;
+        }
+
+        footer .download-app img {
+            width: 120px;
+            margin-right: 10px;
+        }
+
+        .terms-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+            color: #aaa;
+            align-items: center;
+        }
+
+        .terms-left {
+            text-align: left;
+        }
+
+        .terms-right {
+            text-align: right;
+        }
+
+        .terms-left a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .terms-left a:hover {
+            color: #00b3ff;
+            text-decoration: underline;
+        }
+        
+        .port {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .port h1 {
+            font-size: 26px;
+            color: #00b3ff;
+            margin-bottom: 10px;
+        }
+
+        .port p {
+            margin-bottom: 20px;
+        }
+
+        .port a {
+            text-decoration: none;
+            color: white;
+            background-color: #00b3ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .port a:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+        .neumorphism-card button a{
+            text-decoration: none;
+            color: white;
+        }
+h1, h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+section {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+strong {
+  font-weight: bold;
+  color: #00698f;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+.word-services, .excel-services {
+    flex: 1;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+    /* Responsive styling */
+    @media (max-width: 1200px) {
+            /* For tablets and smaller desktops */
+            .search-bar input[type="text"] {
+                width: 120px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .port {
+                max-width: 500px;
+            }
+
+            footer {
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* For tablets and smaller screens */
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .port {
+                max-width: 400px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                margin: 10px 0;
+            }
+
+            .terms-container {
+                flex-direction: column;
+            }
+
+            .terms-left, .terms-right {
+                text-align: center;
+            }
+
+            footer .download-app img {
+                width: 100px;
+            }
+
+            .short_b {
+                font-size: clamp(11px, 1.8vw, 18px);
+                padding: 6px 12px;
+                min-height: 30px;
+                max-height: 80px;
+            }
+        }
+         /* Hamburger Menu Styling */
+         .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Mobile menu (initially hidden) */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #333;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .mobile-nav a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #444;
+        }
+
+        @media (max-width: 485px) {
+            /* For mobile phones */
+            .logo{
+                margin-right: auto;
+            }
+            .logo h1 {
+                font-size: 18px;
+            }
+            .search-bar{
+                display: none;
+            }
+            .language-selector{
+                display: none;
+            }
+            .short_b {
+                font-size: clamp(10px, 1.5vw, 14px);
+                padding: 5px 10px;
+                min-height: 25px;
+                max-height: 60px;
+            }
+            .hamburger{
+                margin-left: auto;
+                margin-top: -250px;
+            }
+
+            .port h1 {
+                font-size: 22px;
+            }
+
+            .neumorphism-card {
+                width: 260px;
+            }
+
+            .nav-container {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+                
+            }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="uy.jpeg" alt="Logo">
+            <h1>Development</h1>
+        </div>
+    
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="goals.html">Goals</a></li>
+            </ul>
+        </div>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="goals.html">Goals</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for Courses">
+            <button class="search-icon" onclick="performSearch()">🔍</button>
+        </div>
+    
+        <div class="language-selector">
+            <select>
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>Chinese</option>
+               
+            </select>
+        </div>
+    </div>
+    <div class="background">
+        <img src="mswii.webp" alt="Image description">
+        <div class="short_b">
+            Empowering businesses with innovative design solutions for growth and success
+        </div>
+    </div>
+    <header>
+        <h1>Professional Excel Services & More</h1>
+        <p>At <strong>HR Development</strong>, we offer a wide range of Excel-related services tailored to meet your business or personal needs. Our expert team ensures high-quality results, no matter the task.</p>
+    </header>
+
+    <section class="services">
+        <h2>Our Excel Services Include:</h2>
+        <ul>
+            <li><strong>Data Entry & Management:</strong> We organize, clean, and manage your data efficiently.</li>
+            <li><strong>Data Analysis:</strong> Get meaningful insights from your data with detailed analysis and visualization.</li>
+            <li><strong>Financial Modeling:</strong> Create accurate financial forecasts and reports tailored to your needs.</li>
+            <li><strong>Pivot Tables & Advanced Formulas:</strong> Enhance your decision-making process with custom Excel formulas and pivot tables.</li>
+            <li><strong>Dashboards:</strong> Visualize your data with interactive and professional dashboards.</li>
+            <li><strong>Automated Reports:</strong> Streamline your workflow with automated reports, saving time and effort.</li>
+        </ul>
+    </section>
+
+    <section class="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <ul>
+            <li><strong>Accuracy:</strong> We prioritize data precision and attention to detail.</li>
+            <li><strong>Timely Delivery:</strong> We meet deadlines and ensure fast turnaround times.</li>
+            <li><strong>Customized Solutions:</strong> Tailored Excel solutions designed for your specific requirements.</li>
+            <li><strong>Confidentiality:</strong> Your data is secure with us, and we maintain the utmost confidentiality.</li>
+        </ul>
+    </section>
+
+    <section class="other-services">
+        <h2>We also provide a variety of other services including:</h2>
+        <ul>
+            <li><strong>Graphic Design:</strong> Professional logos, social media graphics, brochures, and more.</li>
+            <li><strong>Web Development:</strong> Create or enhance your website for an impressive online presence.</li>
+            <li><strong>PowerPoint Presentations:</strong> Eye-catching designs and animations to make your presentations stand out.</li>
+            <li><strong>Data Entry:</strong> Fast and accurate data entry for all your business needs.</li>
+            <li><strong>Assignment Help:</strong> Academic support for students and professionals in need of top-quality assignment work.</li>
+        </ul>
+    </section>
+    <header>
+        <h1>Professional Word Services & More</h1>
+        <p>At <strong>HR Development</strong>, we offer a comprehensive range of Microsoft Word services designed to meet your business or personal needs. Our expert team is dedicated to delivering high-quality results, regardless of the task.</p>
+    </header>
+
+    <section class="services">
+        <h2>Our Word Services Include:</h2>
+        <ul>
+            <li><strong>Document Formatting:</strong> Ensure your documents are professionally formatted to meet industry standards.</li>
+            <li><strong>Content Creation:</strong> Develop engaging and well-structured content for reports, proposals, and other documents.</li>
+            <li><strong>Editing & Proofreading:</strong> Enhance your documents with meticulous editing and proofreading for clarity and accuracy.</li>
+            <li><strong>Template Design:</strong> Create custom Word templates that reflect your brand and streamline your workflow.</li>
+            <li><strong>Merge & Mailings:</strong> Efficiently manage bulk mailings with our mail merge services.</li>
+            <li><strong>Technical Documentation:</strong> Produce clear and concise technical documents, manuals, and guides.</li>
+        </ul>
+    </section>
+
+    <section class="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <ul>
+            <li><strong>Expertise:</strong> Our team has extensive experience in Word document preparation and management.</li>
+            <li><strong>Timely Delivery:</strong> We pride ourselves on meeting deadlines and ensuring quick turnaround times.</li>
+            <li><strong>Tailored Solutions:</strong> We provide customized Word services to meet your specific requirements.</li>
+            <li><strong>Confidentiality:</strong> Your documents and data are secure with us, and we uphold the highest standards of confidentiality.</li>
+        </ul>
+    </section>
+
+    <section class="other-services">
+        <h2>We also provide a variety of other services including:</h2>
+        <ul>
+            <li><strong>Graphic Design:</strong> Professional logos, social media graphics, brochures, and more.</li>
+            <li><strong>Web Development:</strong> Create or enhance your website for an impressive online presence.</li>
+            <li><strong>PowerPoint Presentations:</strong> Eye-catching designs and animations to make your presentations stand out.</li>
+            <li><strong>Data Entry:</strong> Fast and accurate data entry for all your business needs.</li>
+            <li><strong>Assignment Help:</strong> Academic support for students and professionals needing top-quality assignment work.</li>
+        </ul>
+    </section>
+
+	
+  <footer>
+        <div class="footer-section">
+            <h3>HR Development</h3>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="OurTeam.html">Our Team</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Community</h3>
+            <ul>
+                <li><a href="news.html">News</a></li>
+                <li><a href="rating.html">Rate Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>We Provide</h3>
+            <ul>
+                <li><a href="FooterGD.html">Graphic Designer</a></li>
+                <li><a href="FooterWD.html">Web Developer </a></li>
+                <li><a href="FooterPP.html">PowerPoint Expert</a></li>
+                <li><a href="FooterDE.html">Data Entry Expert</a></li>
+                <li><a href="FooterAW.html">Assignment Work</a></li>
+                <li><a href="FooterWE.html">MS Word | MS Excel</a></li>
+                <li><a href="FootFSD.html">Full Stack Developer</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Us On</h3>
+            <div class="download-app">
+              <p>hiringforbenifits24@gmail.com</p>
+              <p>+923456515537</p>
+            </div>
+        </div>
+
+        <!-- Social Icons Section -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/groups/875306051134134/?rdid=rUczcvIl5Yc1zqpf&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2FNf3VXYDCrbwNpZ62%2F" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/hr_development24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@hamzasirang" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube">
+                </a>
+                <a href="https://chat.whatsapp.com/KgcL6pl51gx0D6ZVnjwkmk" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                </a>
+            </div>
+        </div>
+
+         <!-- Terms and Conditions Section -->
+        
+ <div class="terms-container" >
+        
+    <div class="terms-left"> 
+      <p>_______________________________________________________________________________________________________________________________________________________________________________________________________________</p>
+        <p><a href="#">Terms of use</a> | <a href="#">Privacy</a> | <a href="#">Use of cookies</a></p>
+        <p>© 2024 HR_Development Company</p>
+    </div>
+</div>
+    </footer>
+
+  <script>
+    function performSearch() {
+      // Get the input value and convert it to lowercase to handle case-insensitive search
+      var query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      // Check the search term and redirect to the corresponding page
+      if (query === "home") {
+        window.location.href = "home.html"; // Replace with your actual 'home' page URL
+      } else if (query === "about") {
+        window.location.href = "about.html"; // Replace with your actual 'about' page URL
+      } else if (query === "contact") {
+        window.location.href = "contact.html"; // Replace with your actual 'contact' page URL
+      } else if (query === "goals") {
+        window.location.href = "goals.html"; // Replace with your actual 'goals' page URL
+      } else {
+        // If no match, you can show an alert or take other actions
+        alert("Page not found. Please search for 'home', 'about', 'contact', or 'goals'.");
+      }
+    }
+    function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+  </script>
+</body>
+</html>
